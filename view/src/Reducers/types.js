@@ -1,0 +1,6 @@
+
+
+export const CREATE_CARD = 'ADD_CARD'
+export const CREATE_TOPIC = 'CREATE_TOPIC'
+export const DELETE_TOPIC = 'DELETE_TOPIC'
+export const SET_ACTUAL_TOPIC = 'SET_ACTUAL_TOPIC'

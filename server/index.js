@@ -32,13 +32,15 @@ app.post('/', async (req, res) => {
 					$ = cherio.load(res2.body)
 				
 					resp = {
-						title: $('meta[property="og:title"]').attr(),
-						image: $('meta[property="og:image"]').attr(),
-						url: $('meta[property="og:url"]').attr()
+						title: $('meta[property="og:title"]').attr() ? $('meta[property="og:title"]').attr().content : $('meta[property="og:title"]').attr(),
+						image: $('meta[property="og:image"]').attr() ? $('meta[property="og:image"]').attr().content : $('meta[property="og:image"]').attr(),
+						url: $('meta[property="og:url"]').attr() ? $('meta[property="og:url"]').attr().content : $('meta[property="og:url"]').attr(),
+						source: $('meta[property="og:url"]').attr() ? $('meta[property="og:url"]').attr().content.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/im)[1] : $('meta[property="og:url"]').attr()
 					}
+					// console.log(resp.url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/im)[1])
 					res.json(resp)
 				} catch(e) {
-					// console.log(e)
+					console.log(e)
 					res.json({error: 'invalid url'})
 				}
 			})

@@ -4,12 +4,9 @@ import React, { useState } from 'react'
 
 const ReferenceInput =  ({ createCard }) => {
 
-	
-
 	const [inputText, setInputText] = useState('')
 	const changeInputHandler = (e) => {
 		setInputText(e.currentTarget.value)
-		
 	}
 
 	const clickInputHandler = (e) => {
@@ -20,7 +17,7 @@ const ReferenceInput =  ({ createCard }) => {
 	}
 
 	return (
-		<div className="input-groupmb-4" style={{position: 'fixed', bottom: '0px', left: '50%', transform: 'translate(-50%, 0)', width: '750px', paddingTop: '25px', paddingBottom: '25px'}}>
+		<div className="input-groupmb-4" style={{position: 'absolute', width: '80%', bottom: '20px', left: '50%', transform: 'translate(-50%, 0)'}}>
 			
 			<input 	
 					type="text"
@@ -33,7 +30,7 @@ const ReferenceInput =  ({ createCard }) => {
 
 			<i 	
 				className="material-icons"
-				style={{position: 'absolute', right: '10px', bottom: '30px', cursor: 'pointer', color: 'grey'}}
+				style={{position: 'absolute', right: '10px', bottom: '5px', cursor: 'pointer', color: 'grey'}}
 				onClick={e => setInputText('')}
 			>
 					close

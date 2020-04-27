@@ -1,6 +1,5 @@
 import React from 'react'
 
-import './Notice.css'
 import {connect} from 'react-redux'
 
 

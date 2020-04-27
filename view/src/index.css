@@ -1,17 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(65, 65, 65);
-  font-family: 'Roboto', sans-serif;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #3f3f3f;
+    font-family: 'Roboto', sans-serif;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+    background-color: white;
+}
+
+.actualSubTopic {
+	transition: .5s;
+  /* text-shadow: -1px 0px 1px rgba(255, 255, 255, .6); */
+}
+
+.actualSubTopic:before {
+	content : '';
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 20px;
+	height: 20px;
+	border-radius: 1px;
+	width: 2px;
+	box-shadow: -1px 0px 3px rgba(255, 255, 255, .6);
+	background-color: #fff;
+}
+
+@keyframes appearAndDisappearAlert {
+	0% {top: -100px}
+	6% {top: 0}
+	94% {top: 0}
+	100% {top: -100px}
 }

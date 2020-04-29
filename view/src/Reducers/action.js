@@ -1,21 +1,10 @@
-import { CREATE_CARD, CREATE_TOPIC, DELETE_TOPIC, SET_ACTUAL_SUB_TOPIC, DELETE_CARD, CREATE_SUB_TOPIC } from './types'
-
-
-
-
+import { CREATE_CARD, CREATE_TOPIC, SET_ACTUAL_SUB_TOPIC, CREATE_SUB_TOPIC, SET_WINDOW_SETTINGS_STATE, SET_CANDIDATE_FOR_DELETION, UNSET_CANDIDATE_FOR_DELETION, DELETE_CANDIDATE_FOR_DELETION } from './types'
 
 
 export function action_createTopic(topicTitle) {
 	return {
 		type: CREATE_TOPIC,
 		data: { topicTitle }
-	}
-}
-
-export function action_deleteTopic(topicId) {
-	return {
-		type: DELETE_TOPIC,
-		data: { topicId }
 	}
 }
 
@@ -43,9 +32,36 @@ export function action_createCard(url) {
 	}
 }
 
-export function action_deleteCard(cardId) {
+export function action_setWindowSettings(state) {
 	return {
-		type: DELETE_CARD,
-		data: {cardId}
+		type: SET_WINDOW_SETTINGS_STATE,
+		data: { state }
+	}
+}
+
+export function action_setCandidateForDeletion(modeDeletion, payload) {
+	return {
+		type: SET_CANDIDATE_FOR_DELETION,
+		data: {
+			modeDeletion, // 1 - delete topic, 2 - delete subTopic, 3 - delete card
+			payload
+		}
+	}
+}
+
+export function action_unsetCandidateForDeletion(modeDeletion, payload) {
+	return {
+		type: UNSET_CANDIDATE_FOR_DELETION,
+		data: {
+			modeDeletion, // 1 - delete topic, 2 - delete subTopic, 3 - delete card
+			payload
+		}
+	}
+}
+
+
+export function action_deleteCandidateForDeletion() {
+	return {
+		type: DELETE_CANDIDATE_FOR_DELETION
 	}
 }

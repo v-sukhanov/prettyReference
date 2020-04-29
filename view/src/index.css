@@ -21,7 +21,7 @@ code {
     background-color: white;
 }
 
-.actualSubTopic {
+.actualSubTopic, .subTopic {
 	transition: .5s;
   /* text-shadow: -1px 0px 1px rgba(255, 255, 255, .6); */
 }
@@ -35,9 +35,29 @@ code {
 	height: 20px;
 	border-radius: 1px;
 	width: 2px;
-	box-shadow: -1px 0px 3px rgba(255, 255, 255, .6);
-	background-color: #fff;
+	box-shadow: -1px 0px 3px rgba(23, 162, 184, .6);
+	background-color: #17a2b8;
 }
+
+.topic li {
+	transition: .1s;
+}
+
+.topic li:hover {
+	color: white !important;
+}
+
+
+.subTopic li {
+	transition: .1s;
+}
+
+
+
+.subTopic li:hover {
+	color: white !important;
+}
+
 
 @keyframes appearAndDisappearAlert {
 	0% {top: -100px}
@@ -45,3 +65,48 @@ code {
 	94% {top: 0}
 	100% {top: -100px}
 }
+
+.settings__icon {
+	transition: .2s;
+}
+
+.settings__icon:hover {
+	color:	white !important;
+}
+
+.settings__item {
+	transition: .2s;
+}
+
+.settings__item:hover {
+	color: white !important;
+	background-color: rgba(148, 148, 148, .3);
+}
+
+.settings__done {
+	cursor: pointer;
+	transition: .2s;
+}
+
+.settings__done:hover {
+	background-color:rgb(17, 182, 207) !important;
+}
+
+.delete_icon {
+	cursor: pointer;
+}
+
+/* .delete_icon:hover {
+	color: #db192c !important;
+} */
+
+/* @keyframes animationDeleteIcon
+{
+	0% {transform: rotate(0deg);}
+	20% {transform: rotate(15deg);}
+	40% {transform: rotate(-15deg);}
+	60% {transform: rotate(10deg);}
+	80% {transform: rotate(-10deg);}
+	100% {transform: rotate(0deg);}
+
+} */

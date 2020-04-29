@@ -13,7 +13,7 @@ const TopicCreator = ({ createTopic }) => {
 
 	return (
 		<div className="input-groupmb-4" style={{height: '13vh', borderBottom: '1px solid rgba(255, 255, 255, .2)', position: 'relative'}}>
-			<input 	
+			<input
 					type="text"
 					className="form-control m-0"
 					placeholder="Создайте топик" 

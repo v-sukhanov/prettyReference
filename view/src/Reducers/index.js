@@ -1,12 +1,24 @@
 import randToken from 'rand-token'
 
-import { CREATE_CARD, CREATE_TOPIC, DELETE_TOPIC, SET_ACTUAL_SUB_TOPIC, DELETE_CARD, CREATE_SUB_TOPIC } from './types'
+import { CREATE_CARD, CREATE_TOPIC, SET_ACTUAL_SUB_TOPIC, CREATE_SUB_TOPIC, SET_WINDOW_SETTINGS_STATE, SET_CANDIDATE_FOR_DELETION, UNSET_CANDIDATE_FOR_DELETION, DELETE_CANDIDATE_FOR_DELETION } from './types'
 
 
 const initialState = () => {
 	const topics = JSON.parse(localStorage.getItem('topics'))
 
-	return { topics: topics ? topics : [], actualSubTopic: { topicId: null, subTopicId: null, subTopic: null }, notice: { code: 0 }}
+	return {
+		topics: topics ? topics : [],
+		actualSubTopic: { topicId: null, subTopicId: null, subTopic: null },
+		notice: { code: 0 },
+		stateWindowSettings: {
+			mode: 0
+		},
+		candidateForDeletion: {
+			topics: [],
+			subTopics: [],
+			cards: []
+		}
+	}
 }
 
 const createTopic = (newState, { topicTitle }) => {
@@ -14,17 +26,6 @@ const createTopic = (newState, { topicTitle }) => {
 	const newTopics = [...newState.topics]
 	newTopics.unshift({id: newId, title: topicTitle, subTopics: []})
 	newState = { ...newState, topics: newTopics}
-	localStorage.setItem('topics', JSON.stringify(newTopics))
-	return newState
-}
-
-const deleteTopic = (newState, { topicId }) => {
-	const newTopics = newState.topics.filter(topic => topic.id !== topicId)
-	let newActualTopic = null
-	if (newTopics.length) {
-		newActualTopic = newTopics[0].id
-	}
-	newState = { ...newState, topics: newTopics, actualTopic: newActualTopic }
 	localStorage.setItem('topics', JSON.stringify(newTopics))
 	return newState
 }
@@ -48,7 +49,7 @@ const createSubTopic = (newState, { subTopicTitle, topicId }) => {
 
 const createCard = (newState, data) => {
 	if (!newState.actualSubTopic.subTopicId) {
-		newState = {... newState, notice: {code: 2}}
+		newState = { ...newState, notice: {code: 2}}
 	} else if (data.error) {
 		newState = { ...newState, notice: {code: 3} }
 	} else if (!Object.keys(data).length) {
@@ -79,19 +80,6 @@ const createCard = (newState, data) => {
 	return newState
 }
 
-const deleteCard = (newState, { cardId }) => {
-	const newTopics = newState.topics.map(topic => {
-		if (topic.id === newState.actualTopic) {
-			return { ...topic, cards: topic.cards.filter(card => card.id !== cardId) }
-		} else {
-			return topic
-		}
-	})
-	localStorage.setItem('topics', JSON.stringify(newTopics))
-	
-	return { ...newState, topics: newTopics}
-}
-
 
 const setActualSubTopic = (newState, data) => {
 	const topic = newState.topics.find(topic => topic.id === data.topicId)
@@ -102,14 +90,111 @@ const setActualSubTopic = (newState, data) => {
 	return newState
 }
 
+const setCandidateForDeletion = (newState, data) => {
+	switch (data.modeDeletion) {
+		case 1: // delete  topic
+			newState = {
+					...newState,
+					candidateForDeletion: { 
+									topics: [...newState.candidateForDeletion.topics, {topicId: data.payload.topicId}],
+									subTopics: newState.candidateForDeletion.subTopics.filter(subTopic => subTopic.topicId !== data.payload.topicId),
+									cards: []
+							}
+					}
+			break
+		case 2:
+			newState = {
+				...newState,
+				candidateForDeletion: { 
+								topics: [...newState.candidateForDeletion.topics],
+								subTopics: [...newState.candidateForDeletion.subTopics, { topicId: data.payload.topicId, subTopicId: data.payload.subTopicId }],
+								cards: []
+						}
+				}
+			break
+		default:
+			break
+	}
+
+	return newState
+}
+
+
+const unsetCandidateForDeletion = (newState, data) => {
+	switch (data.modeDeletion) {
+		case 1: // delete  topic
+			newState = {
+					...newState,
+					candidateForDeletion: { 
+									topics: newState.candidateForDeletion.topics.filter(topic => topic.topicId !== data.payload.topicId), 
+									subTopics: newState.candidateForDeletion.subTopics,
+									cards: []
+							}
+					}
+			
+
+			break
+		case 2:
+			newState = {
+				...newState,
+				candidateForDeletion: { 
+								topics: newState.candidateForDeletion.topics,
+								subTopics: newState.candidateForDeletion.subTopics.filter(subTopic => subTopic.subTopicId !==  data.payload.subTopicId),
+								cards: []
+						}
+				}
+			break
+		default:
+			break
+	}
+
+	return newState
+}
+
+const deleteCandidateForDeletion = (newState) => {
+	let newActualSubTopic = newState.actualSubTopic
+	const newTopics = newState.topics.filter(topic => {
+		if (newState.candidateForDeletion.topics.find(candidateTopic => candidateTopic.topicId === topic.id)) {
+			if (newActualSubTopic.topicId === topic.id) {
+				newActualSubTopic = {
+					topicId: null,
+					subTopicId: null,
+					subTopic: null
+				}
+			}
+			return false
+		}
+		return true
+	}).map(topic => {
+		if (newState.candidateForDeletion.subTopics.find(candidateSubTopic => candidateSubTopic.topicId === topic.id)) {
+			const newSubTopics = topic.subTopics.filter(subTopic => {
+				if (newState.candidateForDeletion.subTopics.find(candidateSubTopic => candidateSubTopic.subTopicId === subTopic.id)) {
+					if (newActualSubTopic.subTopicId === subTopic.id) {
+						newActualSubTopic = {
+							topicId: null,
+							subTopicId: null,
+							subTopic: null
+						}
+					}
+					return false
+				} else {
+					return true
+				}
+			})
+			return { ...topic, subTopics: newSubTopics }
+		} else {
+			return topic
+		}
+	})
+	localStorage.setItem('topics', JSON.stringify(newTopics))
+	return { ...newState, topics: newTopics, actualSubTopic: newActualSubTopic}
+}
+
 export default (state = initialState(), action) => {
 	let newState = { ...state, notice: { code: 0 } }
 	switch (action.type) {
 		case CREATE_TOPIC:
 			newState = createTopic(newState, action.data)
-			break
-		case DELETE_TOPIC:
-			newState = deleteTopic(newState, action.data)
 			break
 		case CREATE_SUB_TOPIC:
 			newState = createSubTopic(newState, action.data)
@@ -120,8 +205,17 @@ export default (state = initialState(), action) => {
 		case CREATE_CARD:
 			newState = createCard(newState, action.data)
 			break
-		case DELETE_CARD:
-			newState = deleteCard(newState, action.data)
+		case SET_WINDOW_SETTINGS_STATE:
+			newState = { ...newState, stateWindowSettings: action.data.state }
+			break
+		case SET_CANDIDATE_FOR_DELETION:
+			newState = setCandidateForDeletion(newState, action.data)
+			break
+		case UNSET_CANDIDATE_FOR_DELETION:
+			newState = unsetCandidateForDeletion(newState, action.data)
+			break
+		case DELETE_CANDIDATE_FOR_DELETION:
+			newState = deleteCandidateForDeletion(newState)
 			break
 		default:
 			break

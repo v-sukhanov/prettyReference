@@ -7,8 +7,9 @@ import { action_createCard } from '../../Reducers/action'
 
 const MainPage = ({ subTopic, createCard }) => {
 	return (
-		<div className="col" style={{position: 'relative'}} >
+		<div className="col pl-5 pr-5" style={{position: 'relative'}} >
 			{ subTopic && <Cards cards={subTopic.cards}/>}
+		
 			<ReferenceInput className={'list-group-item'} createCard={createCard}/> 
 		</div>
 	)

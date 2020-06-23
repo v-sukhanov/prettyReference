@@ -1,0 +1,95 @@
+.panel {
+
+    padding: 10px 100px;
+    .topic-wrap {
+        .topic {
+            margin: 10px 0;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: .1s;
+        }
+        .futureTopic {
+            //visibility: hidden;
+            color: var(--grey-color);
+            box-shadow: 1px 1px 5px var(--grey-color);
+            input {
+                background: none;
+                border: none;
+                outline: none;
+                color: white;
+            }
+        }
+    }
+
+}
+.color-picker {
+    border: none;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 2px;
+}
+
+.option-block {
+    position: absolute;
+    top: 0;
+    right: 0;
+    .button-icon {
+        cursor: pointer;
+        color: var(--grey-color);
+        transition: .1s;
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+.topic-purple {
+    color: var(--purple-color);
+    //box-shadow: 1px 1px 5px var(--purple-color);
+    &:hover {
+        box-shadow: 1px 1px 10px var(--purple-color);
+    }
+}
+
+.topic-aqua {
+    color: var(--aqua-color);
+    //box-shadow: 1px 1px 5px var(--aqua-color);
+    &:hover {
+        box-shadow: 1px 1px 10px var(--aqua-color);
+    }
+}
+
+.topic-pink {
+    color: var(--pink-color);
+    //box-shadow: 1px 1px 5px var(--pink-color);
+    &:hover {
+        box-shadow: 1px 1px 10px var(--pink-color);
+    }
+}
+
+.topic-teal {
+    color: var(--teal-color);
+    //box-shadow: 1px 1px 5px var(--teal-color);
+    &:hover {
+        box-shadow: 1px 1px 10px var(--teal-color);
+    }
+}
+.topic-orange {
+    color: var(--orange-color);
+    //box-shadow: 1px 1px 5px var(--orange-color);
+    &:hover {
+        box-shadow: 1px 1px 10px var(--orange-color);
+    }
+}
+
+.topic-yellow {
+    color: var(--yellow-color);
+    //box-shadow: 1px 1px 5px var(--yellow-color);
+    &:hover {
+        box-shadow: 1px 1px 10px var(--yellow-color);
+    }
+}
+

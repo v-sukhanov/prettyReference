@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    --aqua-color: rgb(23, 162, 184);
+    --pink-color: #ff4081;
+    --grey-color: rgb(148, 148, 148);
+    --purple-color: #BB86FC;
+    --teal-color: #03DAC5;
+    --orange-color: #F9AA33;
+    --yellow-color: #FFDE03;
+
+}
+
+.mat-expansion-indicator:after {
+    color: var(--text-color) !important;
+}
+
+//// style for input underline
+//.mat-form-field.mat-focused .mat-form-field-ripple {
+//    background-color: rgb(23, 162, 184) !important;
+//}
+//.mat-form-field-underline {
+//    background: white !important;
+//}
+//
+//// input and stuff like that
+.mat-form-field {
+    height: 50px;
+    input {
+        padding-top: 5px;
+        padding-left: 5px;
+        font-size: medium;
+        color: rgb(148, 148, 148);
+
+    }
+    .mat-icon-button {
+        font-size: large;
+        cursor: pointer;
+        color: rgb(148, 148, 148);
+        &:hover {
+            color: white;
+        }
+    }
+    &-label {
+        color: white !important;
+    }
+
+}
+//
+//
+//// panel for topic and subTopic
+//.mat-expansion-panel {
+//    background: none !important;
+//    box-shadow: none !important;
+//    margin-bottom: 5px !important;
+//
+//    &-header-title {
+//        color: rgb(148, 148, 148);
+//    }
+//
+//    .mat-expansion-indicator:after {
+//        color: rgb(148, 148, 148);
+//    }
+//
+//    &-body {
+//        padding-right: 0 !important;
+//        padding-bottom: 0 !important;
+//    }
+//}
+//
+//.mat-action-row {
+//    padding-bottom: 0 !important;
+//    padding-top: 0 !important;
+//    border: none !important;
+//}
+//
+//// list subTopic
+//.mat-list {
+//    &-item-content {
+//        color: rgb(148, 148, 148) !important;
+//        font-size: medium;
+//    }
+//}
+//
+//// divider for list subTopic
+//.mat-divider {
+//    border-top-color: rgb(148, 148, 148) !important;
+//}

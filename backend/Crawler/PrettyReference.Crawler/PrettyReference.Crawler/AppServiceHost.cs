@@ -53,7 +53,7 @@ namespace PrettyReference.Crawler
         {
             Log.Information("PRETTY-REFERENCE-CRAWLER");
             AddServices(_serviceCollection);
-            AddMassTransit(_serviceCollection);
+            // AddMassTransit(_serviceCollection);
         
             ServiceProvider = _serviceCollection.BuildServiceProvider();
 
@@ -63,8 +63,8 @@ namespace PrettyReference.Crawler
             //     await dbContext.Database.MigrateAsync();
             // }
 
-            var busControl = ServiceProvider.GetRequiredService<IBusControl>();
-            await busControl.StartAsync();
+            // var busControl = ServiceProvider.GetRequiredService<IBusControl>();
+            // await busControl.StartAsync();
             var crawler = ServiceProvider.GetRequiredService<CrawlerClient>();
             Log.Information("PRETTY-REFERENCE-CRAWLER");
         }

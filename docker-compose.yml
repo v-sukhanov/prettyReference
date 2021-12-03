@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  crawler:
+    build:
+      context: ./backend/Crawler/PrettyReference.Crawler
+      dockerfile: PrettyReference.Crawler/Dockerfile

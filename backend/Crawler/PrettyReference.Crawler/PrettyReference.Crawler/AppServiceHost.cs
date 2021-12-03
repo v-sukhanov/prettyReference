@@ -53,7 +53,7 @@ namespace PrettyReference.Crawler
         {
             Log.Information("PRETTY-REFERENCE-CRAWLER");
             AddServices(_serviceCollection);
-            // AddMassTransit(_serviceCollection);
+            AddMassTransit(_serviceCollection);
         
             ServiceProvider = _serviceCollection.BuildServiceProvider();
 

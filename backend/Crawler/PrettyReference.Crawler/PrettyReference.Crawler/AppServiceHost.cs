@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PrettyReference.Crawler.Core.CrawlerClients;
 using PrettyReference.Crawler.Domain.CrawlerClient;
+using PrettyReference.Crawler.Handlers.SaveMetaData;
 using Serilog;
 
 namespace PrettyReference.Crawler
@@ -25,7 +26,7 @@ namespace PrettyReference.Crawler
         {
             serviceCollection.AddMassTransit(busConfigurator =>
             {
-                // busConfigurator.AddConsumer<SendMessageToUserHandler>();
+                busConfigurator.AddConsumer<SaveMetaDataHandler>();
                 busConfigurator.UsingRabbitMq((context, config) =>
                 {
                     config.Host(!string.IsNullOrEmpty(_configuration["RABBITMQ_HOST"]) ? _configuration["RABBITMQ_HOST"] : "rabbitmq", !string.IsNullOrEmpty(_configuration["RABBIT_VIRTUAL_APP"]) ? _configuration["RABBIT_VIRTUAL_APP"] : "/", hostConfigurator =>
@@ -44,6 +45,7 @@ namespace PrettyReference.Crawler
         private void AddServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<CrawlerClient>();
+            serviceCollection.AddScoped<SaveMetaDataHandler>();
          
             serviceCollection.AddDbContext<AppDbContext>(opts =>
             {
@@ -67,16 +69,10 @@ namespace PrettyReference.Crawler
                 await dbContext.Database.MigrateAsync();
             }
             //
-            // // var busControl = ServiceProvider.GetRequiredService<IBusControl>();
-            // // await busControl.StartAsync();
-            // var crawler = ServiceProvider.GetRequiredService<CrawlerClient>();
+            var busControl = ServiceProvider.GetRequiredService<IBusControl>();
+            await busControl.StartAsync();
             Log.Information("PRETTY-REFERENCE-CRAWLER");
-            // using (AppDbContext db = new AppDbContext())
-            // {
-            //     var t = new SiteMetaData();
-            //     db.SiteMetaData.Add(t);
-            //     db.SaveChanges();
-            // }
+         
         }
     }
 }

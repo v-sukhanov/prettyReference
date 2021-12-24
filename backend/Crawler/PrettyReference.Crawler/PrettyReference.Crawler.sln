@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyReference.Crawler", "PrettyReference.Crawler\PrettyReference.Crawler.csproj", "{ADD93232-538E-412A-9198-E243EC12913A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyReference.Crawler.Interface", "PrettyReference.Crawler.Interface\PrettyReference.Crawler.Interface.csproj", "{21B32E27-F55C-45F5-9E2C-18DCE6719FC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{ADD93232-538E-412A-9198-E243EC12913A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADD93232-538E-412A-9198-E243EC12913A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADD93232-538E-412A-9198-E243EC12913A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21B32E27-F55C-45F5-9E2C-18DCE6719FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B32E27-F55C-45F5-9E2C-18DCE6719FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B32E27-F55C-45F5-9E2C-18DCE6719FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B32E27-F55C-45F5-9E2C-18DCE6719FC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

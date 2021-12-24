@@ -5,8 +5,14 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
 {
     public class CrawlerClient
     {
+        private readonly AppDbContext _dbContext;
 
-        public SiteMetaData GetMetaDataByUrl(string url)
+        public CrawlerClient(AppDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public SiteMetaData SaveMetaDataByUrl(string url)
         {
             // var url = "https://github.com/sudheerj/angular-interview-questions/blob/master/README.md?utm_source=pocket_mylist";
             var web = new HtmlWeb();
@@ -29,6 +35,8 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
                 }
             }
 
+            _dbContext.SiteMetaData.Add(metaData);
+            _dbContext.SaveChanges();
             return metaData;
         }
     }

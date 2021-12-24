@@ -13,11 +13,17 @@ namespace API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var config = new ConfigurationBuilder()
+                .AddEnvironmentVariables()
+                .Build();
+            CreateHostBuilder(args, config).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IHostBuilder CreateHostBuilder(string[] args, IConfiguration config) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(cfg =>
+                    cfg.AddConfiguration(config)
+                )
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }

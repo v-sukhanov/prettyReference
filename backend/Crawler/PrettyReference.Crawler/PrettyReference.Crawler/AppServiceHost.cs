@@ -55,8 +55,6 @@ namespace PrettyReference.Crawler
         
         public async Task Start()
         {
-            
-
             Log.Information("PRETTY-REFERENCE-CRAWLER");
             AddServices(_serviceCollection);
             AddMassTransit(_serviceCollection);
@@ -68,7 +66,6 @@ namespace PrettyReference.Crawler
                 var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 await dbContext.Database.MigrateAsync();
             }
-            //
             var busControl = ServiceProvider.GetRequiredService<IBusControl>();
             await busControl.StartAsync();
             Log.Information("PRETTY-REFERENCE-CRAWLER");

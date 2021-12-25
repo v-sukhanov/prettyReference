@@ -4,6 +4,7 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["PrettyReference.Crawler/PrettyReference.Crawler.csproj", "PrettyReference.Crawler/"]
+COPY ["PrettyReference.Crawler.Interface/PrettyReference.Crawler.Interface.csproj", "PrettyReference.Crawler.Interface/"]
 RUN dotnet restore "PrettyReference.Crawler/PrettyReference.Crawler.csproj"
 COPY . .
 WORKDIR "/src/PrettyReference.Crawler"

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using HtmlAgilityPack;
 using PrettyReference.Crawler.Domain.CrawlerClient;
 
@@ -38,6 +40,11 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
             _dbContext.SiteMetaData.Add(metaData);
             _dbContext.SaveChanges();
             return metaData;
+        }
+
+        public SiteMetaData[] GetMetaDataList()
+        {
+            return _dbContext.SiteMetaData.ToArray();
         }
     }
 

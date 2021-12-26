@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PrettyReference.Crawler.Core.CrawlerClients;
 using PrettyReference.Crawler.Domain.CrawlerClient;
+using PrettyReference.Crawler.Handlers.GetMetaDataList;
 using PrettyReference.Crawler.Handlers.SaveMetaData;
 using Serilog;
 
@@ -27,6 +28,7 @@ namespace PrettyReference.Crawler
             serviceCollection.AddMassTransit(busConfigurator =>
             {
                 busConfigurator.AddConsumer<SaveMetaDataHandler>();
+                busConfigurator.AddConsumer<GetMetaDataListHandler>();
                 busConfigurator.UsingRabbitMq((context, config) =>
                 {
                     config.Host(!string.IsNullOrEmpty(_configuration["RABBITMQ_HOST"]) ? _configuration["RABBITMQ_HOST"] : "rabbitmq", !string.IsNullOrEmpty(_configuration["RABBIT_VIRTUAL_APP"]) ? _configuration["RABBIT_VIRTUAL_APP"] : "/", hostConfigurator =>
@@ -46,6 +48,7 @@ namespace PrettyReference.Crawler
         {
             serviceCollection.AddScoped<CrawlerClient>();
             serviceCollection.AddScoped<SaveMetaDataHandler>();
+            serviceCollection.AddScoped<GetMetaDataListHandler>();
          
             serviceCollection.AddDbContext<AppDbContext>(opts =>
             {

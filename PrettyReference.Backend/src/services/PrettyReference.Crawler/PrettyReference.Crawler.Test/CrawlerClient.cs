@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using PrettyReference.Crawler.Core.CrawlerClients;
+using PrettyReference.Crawler.Interface.GetMetaDataList;
 using PrettyReference.Crawler.Interface.SaveMetaData;
 using Serilog;
 
@@ -48,6 +49,15 @@ namespace PrettyReference.Crawler.Test
             {
                 Url = "https://docs.docker.com/compose/reference/"
             });
+            Assert.Pass();
+        }
+        
+        [Test]
+        public async Task GetMetaDataByRabbitMq()
+        {
+            var host = await BuildTestHost();
+            var bus = host.ServiceProvider.GetRequiredService<IBusControl>();
+            var response = await bus.Request<GetMetaDataListRequest, GetMetaDataListResponse>(new GetMetaDataListRequest());
             Assert.Pass();
         }
     }

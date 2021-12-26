@@ -18,12 +18,12 @@ namespace PrettyReference.Crawler
                 var services = new ServiceCollection();
 
                 Log.Logger = new LoggerConfiguration()
-                    .Enrich.WithProperty("APP", "PRETTY-REFERENCE-CRAWLER")
-                    .WriteTo.Console(restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Verbose)
+                    .Enrich.WithProperty("APP", "TELEGRAM-NOTIFICATIONS")
+                    .WriteTo.Console(restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Information)
                     .MinimumLevel.Debug()
                     .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
                     .MinimumLevel.Override("IdentityServer4", Serilog.Events.LogEventLevel.Error)
-                    // .WriteTo.Seq("url", Serilog.Events.LogEventLevel.Information)
+                    .WriteTo.Seq("http://seq:5341", Serilog.Events.LogEventLevel.Information)
                     .CreateLogger();
                 services.AddLogging(l => l.AddSerilog());
 
@@ -38,6 +38,7 @@ namespace PrettyReference.Crawler
                 Log.Fatal(ex, "Crashed");
                 Log.CloseAndFlush();
             }
+            Log.Information("end");
         }
     }
 }

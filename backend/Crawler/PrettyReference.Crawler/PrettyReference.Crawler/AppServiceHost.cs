@@ -49,7 +49,7 @@ namespace PrettyReference.Crawler
          
             serviceCollection.AddDbContext<AppDbContext>(opts =>
             {
-                opts.UseMySql("server=localhost;database=pretty-reference;uid=root;pwd=root", ServerVersion.Parse("8.0"));
+                opts.UseMySql("server=database_mysql,8778;database=pretty-reference;uid=root;pwd=root", ServerVersion.Parse("8.0"));
             });
         }
         

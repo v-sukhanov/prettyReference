@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+      <UserSecretsId>fb2ace7c-84ca-4ba9-8d00-7a4e920d7696</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MassTransit" Version="7.3.0" />
+        <PackageReference Include="MassTransit.AspNetCore" Version="7.3.0" />
+        <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.0" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="7.3.0" />
+        <PackageReference Include="Serilog" Version="2.10.0" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+        <PackageReference Include="Serilog.Sinks.Seq" Version="5.1.0" />
+    </ItemGroup>
+
+</Project>

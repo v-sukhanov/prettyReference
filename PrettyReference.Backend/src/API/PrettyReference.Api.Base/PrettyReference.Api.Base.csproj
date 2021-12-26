@@ -16,4 +16,8 @@
         <PackageReference Include="Serilog.Sinks.Seq" Version="5.1.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\services\PrettyReference.Crawler\PrettyReference.Crawler.Interface\PrettyReference.Crawler.Interface.csproj" />
+    </ItemGroup>
+
 </Project>

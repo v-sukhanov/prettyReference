@@ -18,7 +18,7 @@ namespace PrettyReference.Crawler
                 var services = new ServiceCollection();
 
                 Log.Logger = new LoggerConfiguration()
-                    .Enrich.WithProperty("APP", "TELEGRAM-NOTIFICATIONS")
+                    .Enrich.WithProperty("APP", "PRETTY-REFERENCE-CRAWLER")
                     .WriteTo.Console(restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Information)
                     .MinimumLevel.Debug()
                     .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)

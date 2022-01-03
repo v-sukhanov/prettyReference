@@ -4,8 +4,19 @@
     &lt;TestId&gt;NUnit3x::4C803F43-D46D-46DA-8D17-0C24A39052FC::net5.0::PrettyReference.Crawler.Test.Tests.GetMetaDataByRabbitMq&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7187a3e8_002D5a9d_002D4f43_002Daeec_002D9b3fccbb9492/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetAndSaveSiteDate" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7187a3e8_002D5a9d_002D4f43_002Daeec_002D9b3fccbb9492/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetAndSaveSiteDate" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::4C803F43-D46D-46DA-8D17-0C24A39052FC::net5.0::PrettyReference.Crawler.Test.Tests.GetMetaDataByRabbitMq&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::4C803F43-D46D-46DA-8D17-0C24A39052FC::net5.0::PrettyReference.Crawler.Test.Tests.GetSiteDate&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.GetSiteDate&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.GetSiteDataList&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.DeleteSiteData&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f43d0592_002D5928_002D4d77_002Dbdda_002D7f596f0500bb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DeleteSiteData" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.DeleteSiteData&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.SaveSiteByRabbit&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.GetSiteDataListByRabbit&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.DeleteSiteDataByRabbit&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

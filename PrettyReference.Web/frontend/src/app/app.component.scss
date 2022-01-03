@@ -1,0 +1,12 @@
+.template-container {
+	height: 100vh;
+	box-sizing: border-box;
+	width: 100vw;
+	background-color: var(--background-color);
+	transition: background-color .2s, color .2s, border-right-color .2s;
+}
+
+.content {
+	height: calc(100vh - 60px);
+	box-sizing: border-box;
+}

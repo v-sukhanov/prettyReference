@@ -4,8 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using PrettyReference.Crawler.Core.CrawlerClients;
-using PrettyReference.Crawler.Interface.GetMetaDataList;
-using PrettyReference.Crawler.Interface.SaveMetaData;
+using PrettyReference.Crawler.Interface.GetMetaData;
 using Serilog;
 
 namespace PrettyReference.Crawler.Test
@@ -32,34 +31,26 @@ namespace PrettyReference.Crawler.Test
         }
         
         [Test]
-        public async Task GetAndSaveSiteDate()
+        public async Task GetSiteDate()
         {
             var host = await BuildTestHost();
             var crawlerClient = host.ServiceProvider.GetRequiredService<CrawlerClient>();
-            var data = crawlerClient.SaveMetaDataByUrl("https://docs.docker.com/compose/reference/");
+            var data = crawlerClient.GetMetaDataByUrl("https://docs.docker.com/compose/reference/");
             Assert.Pass();
         }
         
         [Test]
-        public async Task GetAndSaveSiteDateByRabbitMq()
+        public async Task GetSiteDataByRabbitMq()
         {
             var host = await BuildTestHost();
             var bus = host.ServiceProvider.GetRequiredService<IBusControl>();
-            var response = await bus.Request<SaveMetaDataRequest, SaveMetaDataResponse>(new SaveMetaDataRequest()
+            var response = await bus.Request<GetMetaDataRequest, GetMetaDataResponse>(new GetMetaDataRequest()
             {
                 Url = "https://docs.docker.com/compose/reference/"
             });
             Assert.Pass();
         }
         
-        [Test]
-        public async Task GetMetaDataByRabbitMq()
-        {
-            var host = await BuildTestHost();
-            var bus = host.ServiceProvider.GetRequiredService<IBusControl>();
-            var response = await bus.Request<GetMetaDataListRequest, GetMetaDataListResponse>(new GetMetaDataListRequest());
-            Assert.Pass();
-        }
     }
 
 }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace PrettyReference.Api.Base
 {
@@ -23,6 +24,7 @@ namespace PrettyReference.Api.Base
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc();
             services.AddControllers();
             AddMassTransit(services);
@@ -30,8 +32,17 @@ namespace PrettyReference.Api.Base
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseRouting(); // используем систему маршрутизации
- 
+            app.UseRouting();
+            app.UseCors(builder =>
+            {
+                var origins =
+                    _configuration["CORS_ORIGINS"]?.Split(" ").Select(x => x.Replace("\"", "")).ToArray();
+                Log.Information(origins[0]);
+                builder.WithOrigins(origins);
+                // builder.AllowAnyOrigin();
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -8,13 +8,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{8AB0C416-DEE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyReference.Api.Base", "src\API\PrettyReference.Api.Base\PrettyReference.Api.Base.csproj", "{E37F2029-D332-4F35-8BF9-7303608C1451}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PrettyReference", "PrettyReference", "{8067B7CB-8542-41CA-BC1E-40A45E1923FF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PrettyReference.Crawler", "PrettyReference.Crawler", "{8067B7CB-8542-41CA-BC1E-40A45E1923FF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyReference.Crawler", "src\services\PrettyReference.Crawler\PrettyReference.Crawler\PrettyReference.Crawler.csproj", "{2CC5798A-CEDD-44B8-8B6E-4501FCCA02E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyReference.Crawler.Interface", "src\services\PrettyReference.Crawler\PrettyReference.Crawler.Interface\PrettyReference.Crawler.Interface.csproj", "{5AC97073-519D-4287-84BA-31995B31AEC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyReference.Crawler.Test", "src\services\PrettyReference.Crawler\PrettyReference.Crawler.Test\PrettyReference.Crawler.Test.csproj", "{4C803F43-D46D-46DA-8D17-0C24A39052FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PrettyReference.ReferenceManager ", "PrettyReference.ReferenceManager ", "{45736B11-1FCC-4864-AA4D-7775D384CAAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyReference.ReferenceManager", "src\services\PrettyReference.ReferenceManager\PrettyReference.ReferenceManager\PrettyReference.ReferenceManager.csproj", "{3171355B-525B-4C56-90C5-802A91EE5232}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyReference.ReferenceManager.Test", "src\services\PrettyReference.ReferenceManager\PrettyReference.ReferenceManager.Test\PrettyReference.ReferenceManager.Test.csproj", "{BF4A9403-2C24-453E-B87B-7C2810FA27B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyReference.ReferenceManager.Interface", "src\services\PrettyReference.ReferenceManager\PrettyReference.ReferenceManager.Interface\PrettyReference.ReferenceManager.Interface.csproj", "{30534816-E2FD-4446-A471-8F3D8A9DEFF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +43,10 @@ Global
 		{2CC5798A-CEDD-44B8-8B6E-4501FCCA02E9} = {8067B7CB-8542-41CA-BC1E-40A45E1923FF}
 		{5AC97073-519D-4287-84BA-31995B31AEC7} = {8067B7CB-8542-41CA-BC1E-40A45E1923FF}
 		{4C803F43-D46D-46DA-8D17-0C24A39052FC} = {8067B7CB-8542-41CA-BC1E-40A45E1923FF}
+		{45736B11-1FCC-4864-AA4D-7775D384CAAE} = {8B79C3E3-A1D4-418E-A914-B0AEA1428483}
+		{3171355B-525B-4C56-90C5-802A91EE5232} = {45736B11-1FCC-4864-AA4D-7775D384CAAE}
+		{BF4A9403-2C24-453E-B87B-7C2810FA27B8} = {45736B11-1FCC-4864-AA4D-7775D384CAAE}
+		{30534816-E2FD-4446-A471-8F3D8A9DEFF0} = {45736B11-1FCC-4864-AA4D-7775D384CAAE}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F6FCE73E-2B0C-4944-B7D7-83FC337C3BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -73,5 +85,17 @@ Global
 		{4C803F43-D46D-46DA-8D17-0C24A39052FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C803F43-D46D-46DA-8D17-0C24A39052FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C803F43-D46D-46DA-8D17-0C24A39052FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3171355B-525B-4C56-90C5-802A91EE5232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3171355B-525B-4C56-90C5-802A91EE5232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3171355B-525B-4C56-90C5-802A91EE5232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3171355B-525B-4C56-90C5-802A91EE5232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF4A9403-2C24-453E-B87B-7C2810FA27B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF4A9403-2C24-453E-B87B-7C2810FA27B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF4A9403-2C24-453E-B87B-7C2810FA27B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF4A9403-2C24-453E-B87B-7C2810FA27B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30534816-E2FD-4446-A471-8F3D8A9DEFF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30534816-E2FD-4446-A471-8F3D8A9DEFF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30534816-E2FD-4446-A471-8F3D8A9DEFF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30534816-E2FD-4446-A471-8F3D8A9DEFF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

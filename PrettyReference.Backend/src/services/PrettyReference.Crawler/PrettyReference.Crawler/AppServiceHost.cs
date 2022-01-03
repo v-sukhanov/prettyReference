@@ -4,9 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PrettyReference.Crawler.Core.CrawlerClients;
-using PrettyReference.Crawler.Domain.CrawlerClient;
-using PrettyReference.Crawler.Handlers.GetMetaDataList;
-using PrettyReference.Crawler.Handlers.SaveMetaData;
+using PrettyReference.Crawler.Handlers.GetMetaData;
 using Serilog;
 
 namespace PrettyReference.Crawler
@@ -27,8 +25,7 @@ namespace PrettyReference.Crawler
         {
             serviceCollection.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.AddConsumer<SaveMetaDataHandler>();
-                busConfigurator.AddConsumer<GetMetaDataListHandler>();
+                busConfigurator.AddConsumer<GetMetaDataHandler>();
                 busConfigurator.UsingRabbitMq((context, config) =>
                 {
                     config.Host(!string.IsNullOrEmpty(_configuration["RABBITMQ_HOST"]) ? _configuration["RABBITMQ_HOST"] : "rabbitmq", !string.IsNullOrEmpty(_configuration["RABBIT_VIRTUAL_APP"]) ? _configuration["RABBIT_VIRTUAL_APP"] : "/", hostConfigurator =>
@@ -47,13 +44,8 @@ namespace PrettyReference.Crawler
         private void AddServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<CrawlerClient>();
-            serviceCollection.AddScoped<SaveMetaDataHandler>();
-            serviceCollection.AddScoped<GetMetaDataListHandler>();
-         
-            serviceCollection.AddDbContext<AppDbContext>(opts =>
-            {
-                opts.UseMySql(_configuration["MYSQL"], ServerVersion.Parse("8.0"));
-            });
+            serviceCollection.AddScoped<GetMetaDataHandler>();
+
         }
         
         public async Task Start()
@@ -64,11 +56,6 @@ namespace PrettyReference.Crawler
             
             ServiceProvider = _serviceCollection.BuildServiceProvider();
             
-            using (var scope = ServiceProvider.CreateScope())
-            {
-                var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                await dbContext.Database.MigrateAsync();
-            }
             var busControl = ServiceProvider.GetRequiredService<IBusControl>();
             await busControl.StartAsync();
             Log.Information("PRETTY-REFERENCE-CRAWLER");

@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\services\PrettyReference.Crawler\PrettyReference.Crawler.Interface\PrettyReference.Crawler.Interface.csproj" />
+      <ProjectReference Include="..\..\services\PrettyReference.ReferenceManager\PrettyReference.ReferenceManager.Interface\PrettyReference.ReferenceManager.Interface.csproj" />
     </ItemGroup>
 
 </Project>

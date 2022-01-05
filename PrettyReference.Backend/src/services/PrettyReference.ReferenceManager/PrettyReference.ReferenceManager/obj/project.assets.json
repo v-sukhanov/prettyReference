@@ -6282,6 +6282,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.ReferenceManager.Interface/PrettyReference.ReferenceManager.Interface.csproj",
       "AutoMapper >= 10.1.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
       "MassTransit >= 7.2.4",
@@ -6435,5 +6436,16 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project '/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.ReferenceManager.Interface/PrettyReference.ReferenceManager.Interface.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.ReferenceManager.Interface/PrettyReference.ReferenceManager.Interface.csproj",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

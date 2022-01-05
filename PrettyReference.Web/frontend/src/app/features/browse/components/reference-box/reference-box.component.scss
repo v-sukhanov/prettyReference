@@ -19,13 +19,14 @@
 
 .img-wrap {
 	position: relative;
-	height: 120px;
 	overflow: hidden;
 	img {
 		width: 100%;
 		overflow: hidden;
 		border-radius: 5px;
-		position: absolute;
+		object-fit: cover;
+		height: 100px;
+		//position: absolute;
 	}
 }
 
@@ -35,7 +36,7 @@ a {
 	//transition: .2s ease;
 	color: white;
 	&:hover {
-		text-decoration: underline;
+		//text-decoration: underline;
 	}
 }
 .title {
@@ -59,4 +60,10 @@ a {
 			opacity: 1;
 		}
 	}
+}
+
+.span_medium {
+	font-size: 11px;
+	opacity: .5;
+	font-family: 'Roboto', sans-serif;
 }

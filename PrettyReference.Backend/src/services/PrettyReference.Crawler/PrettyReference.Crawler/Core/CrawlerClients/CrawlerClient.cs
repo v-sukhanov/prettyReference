@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
@@ -18,7 +19,8 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
             var web = new HtmlWeb();
             var doc = web.Load(url);
             var list = doc.DocumentNode.SelectNodes("//meta");
-            var metaData = new SiteMetaDataItem() { Url = url};
+            Uri myUri = new Uri(url);   
+            var metaData = new SiteMetaDataItem() { Url = url, Source = myUri.Host};
             foreach (var item in list)
             {
                 if (item.Attributes["property"]?.Value == "og:title")
@@ -30,6 +32,15 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
                     metaData.Image = item.Attributes["content"]?.Value;
                 }
                 
+            }
+
+            if (metaData.Title == null)
+            {
+                var title = doc.DocumentNode.SelectNodes("//title");
+                if (title != null && title.Count != 0)
+                {
+                    metaData.Title = title[0].InnerText;
+                }
             }
             
             return metaData;

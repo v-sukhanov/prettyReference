@@ -35,7 +35,7 @@ namespace PrettyReference.Crawler.Test
         {
             var host = await BuildTestHost();
             var crawlerClient = host.ServiceProvider.GetRequiredService<CrawlerClient>();
-            var data = crawlerClient.GetMetaDataByUrl("https://docs.docker.com/compose/reference/");
+            var data = crawlerClient.GetMetaDataByUrl("https://www.youtube.com/");
             Assert.Pass();
         }
         

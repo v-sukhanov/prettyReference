@@ -6,6 +6,7 @@ namespace PrettyReference.ReferenceManager.Domain.Db
     {
         public Guid Id { get; set; }
         public string Url { get; set; }
+        public string Source { get; set; }
         public string Title { get; set; }
         public string Image { get; set; }
 
@@ -13,12 +14,13 @@ namespace PrettyReference.ReferenceManager.Domain.Db
         {
             
         }
-        public ReferenceInformation(Guid id, string url, string title, string image)
+        public ReferenceInformation(Guid id, string url, string title, string image, string source)
         {
             Id = id;
             Url = url;
             Title = title;
             Image = image;
+            Source = source;
         }
     }
 }

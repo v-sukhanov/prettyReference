@@ -24,12 +24,7 @@ namespace PrettyReference.Crawler.Handlers.GetMetaData
             var item =_crawlerClient.GetMetaDataByUrl(context.Message.Url);
             await context.RespondAsync(new GetMetaDataResponse()
             {
-                Item = new SiteMetaDataItem()
-                {
-                    Url = item.Url,
-                    Image = item.Image,
-                    Title = item.Title
-                }
+                Item = item
             });
         }
     }

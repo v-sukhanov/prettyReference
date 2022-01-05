@@ -4,6 +4,7 @@ import { HeaderComponent } from './header.component';
 import { FlexModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HeaderDataService } from './services/header-data.service';
+import { LoaderModule } from '../../shared/components/loader/loader.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HeaderDataService } from './services/header-data.service';
 	imports: [
 		CommonModule,
 		FlexModule,
-		FormsModule
+		FormsModule,
+		LoaderModule
 	],
 	providers: [
 		HeaderDataService

@@ -1,9 +1,14 @@
 
-<div class="browse" fxLayout="row wrap" fxLayoutAlign="default default">
+<div *ngIf="!firstLoading" class="browse" fxLayout="row wrap" fxLayoutAlign="default default">
     <pref-reference-box
+            class="reference-box"
             fxFlex="20%"
             *ngFor="let ref of urlList"
             [reference]="ref"
             (deleteReferenceEvent)="deleteReference($event)"
     ></pref-reference-box>
+</div>
+
+<div *ngIf="firstLoading" fxLayoutAlign="center center" class="loader">
+    <pref-browse-loader></pref-browse-loader>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BrowseDataService } from './services/browse-data.service';
 import { IReference } from './interfaces/requests/get-url-list/url-list.interface';
-import { Subject, switchMap, takeUntil } from 'rxjs';
+import { combineLatest, debounceTime, Subject, switchMap, takeUntil, timer } from 'rxjs';
 import { ProcessService } from '../../core/services/process.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
 
 	public urlList: IReference[];
 	private _unsub$: Subject<void>;
+	public firstLoading: boolean;
 
 	constructor(
 		private _dataService: BrowseDataService,
@@ -20,13 +21,16 @@ export class BrowseComponent implements OnInit, OnDestroy {
 	) {
 		this.urlList = [];
 		this._unsub$ = new Subject<void>();
+		this.firstLoading = true;
 	}
 
 	public ngOnInit(): void {
 		this._subscribeOnUrlWasAdded();
-		this._dataService.getUrlList().subscribe(x => {
-			this.urlList = x;
-		});
+		combineLatest([this._dataService.getUrlList(), timer(1000)])
+			.subscribe(([x, y]) => {
+				this.urlList = x;
+				this.firstLoading = false;
+			})
 	}
 
 	private _subscribeOnUrlWasAdded(): void {

@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 import { BrowseDataService } from './services/browse-data.service';
 import { FlexModule } from '@angular/flex-layout';
 import { ReferenceBoxComponent } from './components/reference-box/reference-box.component';
+import { BrowseLoaderComponent } from './components/browse-loader/browse-loader.component';
 
 
 @NgModule({
 	declarations: [
 		BrowseComponent,
-  ReferenceBoxComponent
+  ReferenceBoxComponent,
+  BrowseLoaderComponent
 	],
 	imports: [
 		CommonModule,

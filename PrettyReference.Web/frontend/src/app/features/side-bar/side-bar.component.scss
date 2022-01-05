@@ -52,9 +52,9 @@ button {
 	padding: 0 10px;
 	cursor: pointer;
 	transition: .2s;
-	&:hover {
-		background: rgba(#BB86FC, .9);
-	}
+	//&:hover {
+	//	background: rgba(#BB86FC, .9);
+	//}
 	width: 100%;
 	&:disabled {
 		opacity: .5;

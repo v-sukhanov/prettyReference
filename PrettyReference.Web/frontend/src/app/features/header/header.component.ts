@@ -9,22 +9,30 @@ import { HeaderDataService } from './services/header-data.service';
 })
 export class HeaderComponent implements OnInit {
 	public url: string;
+	public process: boolean;
 
 	constructor(
 		private _processService: ProcessService,
 		private _dataService: HeaderDataService
 	) {
 		this.url = '';
+		this.process = false;
 	}
 
 	ngOnInit(): void {
 	}
 
 	public addUrl(): void {
-		this._dataService.addUrl({ url: this.url })
+		if (!this.url || this.process) {
+			return ;
+		}
+		const url = this.url;
+		this.process = true;
+		this.url = '';
+		this._dataService.addUrl({ url })
 			.subscribe(() => {
-				this.url = '';
 				this._processService.newUrlWasAdded$.next();
+				this.process = false;
 			})
 	}
 }

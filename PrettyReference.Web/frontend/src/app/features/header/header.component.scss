@@ -3,6 +3,17 @@
 .header {
 	height: 60px;
 	background-color: var(--background-navbar-color);
+	position: relative;
+}
+
+.logo {
+	position: absolute;
+	left: 60px;
+	top: 50%;
+	transform: translateY(-50%);
+	img {
+		height: 50px;
+	}
 }
 
 

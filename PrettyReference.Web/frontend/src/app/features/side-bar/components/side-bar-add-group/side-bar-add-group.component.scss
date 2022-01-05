@@ -1,0 +1,52 @@
+
+.container {
+	position: relative;
+}
+
+.plus {
+	position: absolute;
+	cursor: pointer;
+	top: 50%;
+	right: 5px;
+	transform: translateY(-50%);
+	path {
+		fill:white;
+		transition: .2s;
+	}
+	&:hover {
+		path {
+			fill: var(--primary-color);
+		}
+	}
+}
+
+input {
+	background: var(--background-color);
+	height: 30px;
+	box-sizing: border-box;
+	outline: none;
+	border-radius: 5px;
+	border: 1px solid rgba(white, .15);
+	padding: 2px 30px 2px 15px;
+	white-space: nowrap;
+	font-family: Roboto, sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 20px;
+	color: white;
+	width: 100%;
+	//transition: .2s;
+	&::placeholder {
+		font-family: Roboto, sans-serif;
+		font-weight: 500;
+		font-size: 13px;
+		color: rgba(white, .6);
+	}
+	//&:focus {
+	//	width: 500px;
+	//}
+	//&:focus, &:hover {
+	//	border: 1px solid var(--accent-color);
+	//}
+}

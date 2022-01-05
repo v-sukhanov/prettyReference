@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using MassTransit;
+using PrettyReference.ReferenceManager.Core.RefManagers;
 using PrettyReference.ReferenceManager.Domain.Db;
 using PrettyReference.ReferenceManager.Interface.GetRefereceList;
 using PrettyReference.ReferenceManager.Interface.GetReferenceList;
@@ -12,16 +13,16 @@ namespace PrettyReference.ReferenceManager.Handlers.GetReferenceList
 {
     public class GetReferenceHandler: IConsumer<GetReferenceListRequest>
     {
-        private readonly AppDbContext _dbContext;
+        private readonly RefManager _refManager;
 
-        public GetReferenceHandler(AppDbContext dbContext)
+        public GetReferenceHandler(RefManager refManager)
         {
-            _dbContext = dbContext;
+            _refManager = refManager;
         }
 
         public async Task Consume(ConsumeContext<GetReferenceListRequest> context)
         {
-            var list = _dbContext.ReferenceInformation;
+            var list = _refManager.GetReferenceInformationList();
             var config = new MapperConfiguration(cfg => cfg.CreateMap<ReferenceInformation, SiteReference>());
             var mapper = new Mapper(config);
             var mapped = list.Select(x => mapper.Map<SiteReference>(x));

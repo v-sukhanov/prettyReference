@@ -40,7 +40,7 @@ namespace PrettyReference.ReferenceManager.Test
         {
             var host = await BuildTestHost();
             var crawlerClient = host.ServiceProvider.GetRequiredService<RefManager>();
-            var data = await crawlerClient.GetAndSaveReferenceInformation("https://docs.docker.com/compose/reference/");
+            var data = await crawlerClient.GetAndSaveReferenceInformation("https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/src/Web/WebSPA/Client/src/modules");
             Assert.Pass();
         }
         

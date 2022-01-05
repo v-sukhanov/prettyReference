@@ -48,7 +48,7 @@ namespace PrettyReference.ReferenceManager.Core.RefManagers
         
         public ReferenceInformation[]  GetReferenceInformationList()
         {
-            return _dbContext.ReferenceInformation.ToArray();
+            return _dbContext.ReferenceInformation.OrderByDescending(x => x.CreatedDate).ToArray();
         }
         
     }

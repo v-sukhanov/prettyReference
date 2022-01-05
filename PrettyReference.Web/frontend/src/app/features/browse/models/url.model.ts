@@ -1,12 +1,11 @@
 import { IReference } from '../interfaces/requests/get-url-list/reference.interface';
-import { Moment } from 'moment';
 import * as moment from 'moment/moment';
 
 
 export class UrlModel implements IReference{
 	private _createdDate!: string;
 	public set createdDate(date: string) {
-		const createdUtc = moment.utc(date).local();
+		const createdUtc = moment.utc(date);
 		if (moment().diff(createdUtc, 'days') < 1 && moment().format('D') === createdUtc.format('D')) {
 			this._createdDate = createdUtc.format('Сегодня, H:mm');
 		} else if (moment().diff(createdUtc, 'days') < 2 && (parseInt(moment().format('D'), 10) - parseInt(createdUtc.format('D'), 10)) === 1) {

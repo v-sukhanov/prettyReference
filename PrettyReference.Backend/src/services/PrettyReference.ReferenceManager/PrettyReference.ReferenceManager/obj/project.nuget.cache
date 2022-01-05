@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "tBXZiH5gFajwymhJaLksvx08LflrYjzOMBuRPBDUHCqsSQkf7X4gDz2MZBm6A7dirw4NB46tXHj/smnBSAwVpw==",
-  "success": false,
+  "dgSpecHash": "0Qi6MqIfgiKSEXSw/eIeae23A/AGWj5uk+QVxSgG2WgW2EbAyGxdbkyTnCsc1OZaqXqe4Y4w/3Hu1McnfPlngQ==",
+  "success": true,
   "projectFilePath": "/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.ReferenceManager/PrettyReference.ReferenceManager/PrettyReference.ReferenceManager.csproj",
   "expectedPackageFiles": [
     "/Users/frontender/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
@@ -130,15 +130,5 @@
     "/Users/frontender/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/frontender/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project '/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.ReferenceManager.Interface/PrettyReference.ReferenceManager.Interface.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.ReferenceManager.Interface/PrettyReference.ReferenceManager.Interface.csproj",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  "logs": []
 }

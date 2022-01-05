@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment/moment';
 
 @Component({
   selector: 'pref-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  constructor() {
+    moment.locale('ru');
+  }
+
 }

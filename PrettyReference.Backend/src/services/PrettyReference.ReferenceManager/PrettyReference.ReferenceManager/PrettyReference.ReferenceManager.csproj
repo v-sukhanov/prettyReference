@@ -30,7 +30,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\PrettyReference.Crawler\PrettyReference.Crawler.Interface\PrettyReference.Crawler.Interface.csproj" />
-      <ProjectReference Include="..\..\PrettyReference.ReferenceManager.Interface\PrettyReference.ReferenceManager.Interface.csproj" />
       <ProjectReference Include="..\PrettyReference.ReferenceManager.Interface\PrettyReference.ReferenceManager.Interface.csproj" />
     </ItemGroup>
 

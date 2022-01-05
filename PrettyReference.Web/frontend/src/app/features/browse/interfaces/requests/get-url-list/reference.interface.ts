@@ -4,4 +4,5 @@ export interface IReference {
 	title: string,
 	image: string,
 	source: string
+	createdDate: string;
 }

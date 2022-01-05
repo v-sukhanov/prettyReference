@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BrowseDataService } from './services/browse-data.service';
-import { IReference } from './interfaces/requests/get-url-list/url-list.interface';
 import { combineLatest, debounceTime, Subject, switchMap, takeUntil, timer } from 'rxjs';
 import { ProcessService } from '../../core/services/process.service';
+import { UrlModel } from './models/url.model';
 
 @Component({
 	selector: 'pref-browse',
@@ -11,7 +11,7 @@ import { ProcessService } from '../../core/services/process.service';
 })
 export class BrowseComponent implements OnInit, OnDestroy {
 
-	public urlList: IReference[];
+	public urlList: UrlModel[];
 	private _unsub$: Subject<void>;
 	public firstLoading: boolean;
 
@@ -28,7 +28,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
 		this._subscribeOnUrlWasAdded();
 		combineLatest([this._dataService.getUrlList(), timer(1000)])
 			.subscribe(([x, y]) => {
-				this.urlList = x;
+				this.urlList = x.map(v => new UrlModel(v));
 				this.firstLoading = false;
 			})
 	}
@@ -42,7 +42,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
 				})
 			)
 			.subscribe(x => {
-				this.urlList = x;
+				this.urlList = x.map(v => new UrlModel(v));
 			});
 	}
 

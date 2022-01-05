@@ -60,5 +60,6 @@ services:
       database_mysql:
         condition: service_healthy
     environment:
+      TZ: Europe/Moscow
       RABBITMQ_HOST: rabbitmq
       MYSQL: server=database_mysql,8778;database=pretty-reference;uid=root;pwd=root    

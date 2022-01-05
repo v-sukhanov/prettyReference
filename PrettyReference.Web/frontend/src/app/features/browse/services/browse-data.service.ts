@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '../../../core/services/http.service';
 import { Observable } from 'rxjs';
 import { IGetUrlListResponse } from '../interfaces/requests/get-url-list/get-url-list.response';
-import { IReference } from '../interfaces/requests/get-url-list/url-list.interface';
+import { IReference } from '../interfaces/requests/get-url-list/reference.interface';
 import { IAddUrlRequest } from '../../header/interfaces/requests/add-url/add-url.request';
 
 

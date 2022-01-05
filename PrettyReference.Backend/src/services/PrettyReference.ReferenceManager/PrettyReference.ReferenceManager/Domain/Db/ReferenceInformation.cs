@@ -2,7 +2,7 @@ using System;
 
 namespace PrettyReference.ReferenceManager.Domain.Db
 {
-    public class ReferenceInformation
+    public class ReferenceInformation: BaseEntity
     {
         public Guid Id { get; set; }
         public string Url { get; set; }
@@ -12,15 +12,10 @@ namespace PrettyReference.ReferenceManager.Domain.Db
 
         public ReferenceInformation()
         {
-            
         }
-        public ReferenceInformation(Guid id, string url, string title, string image, string source)
-        {
-            Id = id;
-            Url = url;
-            Title = title;
-            Image = image;
-            Source = source;
-        }
+    }
+    
+    public class BaseEntity{ 
+        public DateTime CreatedDate { get; set; }
     }
 }

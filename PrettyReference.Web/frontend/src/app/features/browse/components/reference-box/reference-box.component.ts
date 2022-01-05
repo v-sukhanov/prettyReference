@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IReference } from '../../interfaces/requests/get-url-list/url-list.interface';
+import { IReference } from '../../interfaces/requests/get-url-list/reference.interface';
 import { BrowseDataService } from '../../services/browse-data.service';
+import { UrlModel } from '../../models/url.model';
 
 @Component({
 	selector: 'pref-reference-box',
@@ -9,7 +10,7 @@ import { BrowseDataService } from '../../services/browse-data.service';
 })
 export class ReferenceBoxComponent implements OnInit {
 
-	@Input() public reference: IReference | null;
+	@Input() public reference: UrlModel | null;
 
 
 	@Output() public deleteReferenceEvent: EventEmitter<string>;

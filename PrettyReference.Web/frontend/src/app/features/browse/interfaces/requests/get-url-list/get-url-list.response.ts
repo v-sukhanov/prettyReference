@@ -1,4 +1,4 @@
-import { IReference } from './url-list.interface';
+import { IReference } from './reference.interface';
 
 
 export interface IGetUrlListResponse {

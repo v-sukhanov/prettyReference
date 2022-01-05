@@ -1,21 +1,37 @@
 <div fxLayoutAlign="space-between" class="reference-box" *ngIf="reference" fxLayout="column" fxLayoutGap="10px">
-    <a [href]="reference.url" target="_blank" fxLayout="column" fxLayoutGap="10px">
-        <div  class="img-wrap">
-            <img [src]="reference.image" alt="">
-        </div>
-        <div>
+    <div fxLayout="column" fxLayoutGap="10px">
+        <a [href]="reference.url" target="_blank" fxLayout="column" fxLayoutGap="10px">
+            <div  class="img-wrap">
+                <img [src]="reference.image" alt="">
+            </div>
             <div>
+                <div>
                 <span class="title">
                     {{reference.title}}
                 </span>
+                </div>
+            </div>
+        </a>
+        <div fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="default center">
+            <div>
+                <span class="span_medium">
+                    {{reference.source}}
+                </span>
+            </div>
+            <div>
+                <span class="span_medium">
+                    ·
+                </span>
+            </div>
+            <div>
+                <span class="span_medium">
+                    {{reference.createdDate}}
+                </span>
             </div>
         </div>
-        <div>
-            <span class="span_medium">
-                {{reference.source}}
-            </span>
-        </div>
-    </a>
+    </div>
+
+
     <div class="reference-box-action" fxLayout="row" fxLayoutAlign="end">
         <div>
             <img (click)="deleteReference()" src="assets/img/delete.svg" alt="delete">

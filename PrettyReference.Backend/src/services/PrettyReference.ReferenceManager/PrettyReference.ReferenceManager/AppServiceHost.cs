@@ -3,9 +3,13 @@ using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PrettyReference.ReferenceManager.Core.RefGroupManagers;
 using PrettyReference.ReferenceManager.Core.RefManagers;
+using PrettyReference.ReferenceManager.Handlers.CreateRefGroup;
 using PrettyReference.ReferenceManager.Handlers.DeleteReference;
+using PrettyReference.ReferenceManager.Handlers.DeleteRefGroup;
 using PrettyReference.ReferenceManager.Handlers.GetReferenceList;
+using PrettyReference.ReferenceManager.Handlers.GetRefGroupList;
 using PrettyReference.ReferenceManager.Handlers.SaveReference;
 using Serilog;
 
@@ -30,6 +34,9 @@ namespace PrettyReference.ReferenceManager
                 busConfigurator.AddConsumer<SaveReferenceHandler>();
                 busConfigurator.AddConsumer<GetReferenceHandler>();
                 busConfigurator.AddConsumer<DeleteReferenceHandler>();
+                busConfigurator.AddConsumer<CreateRefGroupHandler>();
+                busConfigurator.AddConsumer<DeleteRefGroupHandler>();
+                busConfigurator.AddConsumer<GetRefGroupListHandler>();
                 busConfigurator.UsingRabbitMq((context, config) =>
                 {
                     config.Host(!string.IsNullOrEmpty(_configuration["RABBITMQ_HOST"]) ? _configuration["RABBITMQ_HOST"] : "rabbitmq", !string.IsNullOrEmpty(_configuration["RABBIT_VIRTUAL_APP"]) ? _configuration["RABBIT_VIRTUAL_APP"] : "/", hostConfigurator =>
@@ -49,9 +56,14 @@ namespace PrettyReference.ReferenceManager
         {
 
             serviceCollection.AddScoped<RefManager>();
+            serviceCollection.AddScoped<RefGroupManager>();
             serviceCollection.AddScoped<SaveReferenceHandler>();
             serviceCollection.AddScoped<GetReferenceHandler>();
             serviceCollection.AddScoped<DeleteReferenceHandler>();
+            serviceCollection.AddScoped<CreateRefGroupHandler>();
+            serviceCollection.AddScoped<DeleteRefGroupHandler>();
+            serviceCollection.AddScoped<GetRefGroupListHandler>();
+            
             serviceCollection.AddDbContext<AppDbContext>(opts =>
             {
                 opts.UseMySql(_configuration["MYSQL"], ServerVersion.Parse("8.0"));

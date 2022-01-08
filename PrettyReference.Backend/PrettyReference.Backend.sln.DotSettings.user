@@ -1,4 +1,9 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=40b1a0da_002D5944_002D455e_002Db9b3_002D3ee0a0183049/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetGroupListByRabbit" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.GetGroupListByRabbit&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6039152f_002Dbba5_002D4572_002Dafda_002D582db2834c46/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetAndSaveSiteDate #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::4C803F43-D46D-46DA-8D17-0C24A39052FC::net5.0::PrettyReference.Crawler.Test.Tests.GetSiteDate&lt;/TestId&gt;
@@ -19,10 +24,28 @@
     &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.GetSiteDataList&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e87a0b3b_002Daa26_002D403b_002Dbd27_002Dce86a0219451/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetSiteDataList" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a6877444_002D1125_002D483a_002D9084_002Dea92bda25006/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CreateGroup" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.CreateGroup&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.DeleteGroup&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.GetGroupList&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.GetGroupListByRabbit&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=af2469b1_002D3ea4_002D4b78_002D9e94_002D15a55a3f1225/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CreateGroup #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.CreateGroup&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.CreateGroupByRabbit&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.DeleteGroupByRabbit&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.GetGroupList&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e87a0b3b_002Daa26_002D403b_002Dbd27_002Dce86a0219451/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetSiteDataList" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.GetSiteDataList&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.GetSiteDataListByRabbit&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.CreateGroup&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.CreateGroupByRabbit&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f43d0592_002D5928_002D4d77_002Dbdda_002D7f596f0500bb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DeleteSiteData" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;

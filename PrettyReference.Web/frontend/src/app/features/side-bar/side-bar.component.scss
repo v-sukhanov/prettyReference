@@ -1,7 +1,10 @@
 
 .sidebar {
-	width: 200px;
+	width: 220px;
 	padding: 45px 30px;
+	border-right: 1px solid rgba(255, 255, 255, .1);
+	height: 100%;
+	//background-color: var(--background-navbar-color);
 }
 
 
@@ -38,8 +41,9 @@ input {
 
 
 .sidebar-items {
-	height: calc(100vh - 200px);
+	height: calc(100vh - 220px);
 }
+
 
 button {
 	outline: none;

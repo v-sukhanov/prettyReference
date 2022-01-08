@@ -12,6 +12,7 @@ namespace PrettyReference.ReferenceManager
             
         }
         public DbSet<ReferenceInformation> ReferenceInformation { get; private set; }
+        public DbSet<GroupReference> GroupReference { get; private set; }
     
 
         public AppDbContext(DbContextOptions options) : base(options)
@@ -31,15 +32,22 @@ namespace PrettyReference.ReferenceManager
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ReferenceInformation>()
+                .HasOne(x => x.GroupReference)
+                .WithMany(x => x.References)
+                .HasForeignKey(x => x.GroupReferenceId);
         }
         public override int SaveChanges()
         {
-            var entries = ChangeTracker
+            var references = ChangeTracker
                 .Entries()
-                .Where(e => e.Entity is BaseEntity && (
+                .Where(e => e.Entity is BaseEntity &&  e.Entity is ReferenceInformation && (
                     e.State == EntityState.Added));
-
-            foreach (var entityEntry in entries)
+            var groups = ChangeTracker
+                .Entries()
+                .Where(e => e.Entity is BaseEntity &&  e.Entity is GroupReference && (
+                    e.State == EntityState.Added));
+            foreach (var entityEntry in references)
             {
 
                 if (entityEntry.State == EntityState.Added)
@@ -47,6 +55,15 @@ namespace PrettyReference.ReferenceManager
                     ((BaseEntity)entityEntry.Entity).CreatedDate = DateTime.Now;
                 }
             }
+            foreach (var entityEntry in groups)
+            {
+
+                if (entityEntry.State == EntityState.Added)
+                {
+                    ((BaseEntity)entityEntry.Entity).CreatedDate = DateTime.Now;
+                }
+            }
+
 
             return base.SaveChanges();
         }

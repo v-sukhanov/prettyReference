@@ -2,7 +2,7 @@
 <div *ngIf="!firstLoading" class="browse" fxLayout="row wrap" fxLayoutAlign="default default">
     <pref-reference-box
             class="reference-box"
-            fxFlex="20%"
+            fxFlex="25%"
             *ngFor="let ref of urlList"
             [reference]="ref"
             (deleteReferenceEvent)="deleteReference($event)"

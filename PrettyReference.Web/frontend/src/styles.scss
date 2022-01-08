@@ -63,3 +63,7 @@ perfect-scrollbar>.ps.ps--active-x>.ps__rail-x.ps--clicking, perfect-scrollbar>.
 	transition: .2s linear top;
 	/* maybe other vendor-prefixed transitions */
 }
+
+.ps-content {
+	padding-right: 8px;
+}

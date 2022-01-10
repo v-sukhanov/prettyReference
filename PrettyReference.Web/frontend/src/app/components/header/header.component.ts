@@ -3,6 +3,7 @@ import { ProcessService } from '../../core/services/process.service';
 import { HeaderDataService } from './services/header-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, switchMap, takeUntil } from 'rxjs';
+import { NotificationsService } from '../../core/services/notifications.service';
 
 @Component({
 	selector: 'pref-header',
@@ -18,7 +19,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	constructor(
 		private _processService: ProcessService,
 		private _dataService: HeaderDataService,
-		private _route: ActivatedRoute
+		private _route: ActivatedRoute,
+		private _notificationsService: NotificationsService
 	) {
 		this._tagId = null;
 		this.url = '';
@@ -52,6 +54,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 			.subscribe(() => {
 				this._processService.referencesWasChanged$.next();
 				this.process = false;
+				this._notificationsService.notifications$.next('Ссылка успешно добавлена');
 			})
 	}
 }

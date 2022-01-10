@@ -51,8 +51,6 @@ namespace PrettyReference.ReferenceManager.Core.RefManagers
         
         public ReferenceInformation[]  GetReferenceInformationList(Guid? group)
         {
-            Log.Information($"ConsumeContext<GetReferenceListRequest> context: {group}");
-
             return _dbContext.ReferenceInformation.Include(x => x.GroupReference).Where(x => group == null ||  x.GroupReferenceId == group).OrderByDescending(x => x.CreatedDate).ToArray();
         }
         

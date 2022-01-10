@@ -12,6 +12,7 @@ using PrettyReference.ReferenceManager.Interface.GetReferenceList;
 using PrettyReference.ReferenceManager.Interface.GetRefGroupList;
 using PrettyReference.ReferenceManager.Interface.SaveReference;
 using PrettyReference.ReferenceManager.Interface.Shared;
+using Serilog;
 
 namespace PrettyReference.Api.Base.Controllers.References
 {
@@ -20,35 +21,63 @@ namespace PrettyReference.Api.Base.Controllers.References
         [HttpPost]
         public async Task<SiteReference> SaveReference([FromServices] IBusControl busControl, [FromBody] ParseAndSaveMetadataRequest request )
         {
-            var response = await busControl.Request<SaveReferenceRequest, SaveReferenceResponse>(
-                new SaveReferenceRequest()
-                {
-                    Url = request.Url,
-                    GroupId = request.TagId
-                });
-            return response.Message.Item;
+            try
+            {
+                var response = await busControl.Request<SaveReferenceRequest, SaveReferenceResponse>(
+                    new SaveReferenceRequest()
+                    {
+                        Url = request.Url,
+                        GroupId = request.TagId
+                    });
+                return response.Message.Item;
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return null;
+            }
+           
         }
         
         [HttpDelete]
         public async Task<DeleteReferenceResponse> DeleteReference([FromServices] IBusControl busControl, [FromQuery] Guid id )
         {
-            var response = await busControl.Request<DeleteReferenceRequest, DeleteReferenceResponse>(
-                new DeleteReferenceRequest()
-                {
-                    Id = id
-                });
-            return response.Message;
+            try
+            {
+                var response = await busControl.Request<DeleteReferenceRequest, DeleteReferenceResponse>(
+                    new DeleteReferenceRequest()
+                    {
+                        Id = id
+                    });
+                return response.Message;
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return null;
+            }
+            
         }
         
         [HttpGet]
         public async Task<SiteReference[]> GetReferenceList([FromServices] IBusControl busControl, [FromQuery] Guid? tagId)
         {
-            var response = await busControl.Request<GetReferenceListRequest, GetReferenceListResponse>(
-                new GetReferenceListRequest()
-                {
-                    TagId = tagId
-                });
-            return response.Message.Items;
+            try
+            {
+                var response = await busControl.Request<GetReferenceListRequest, GetReferenceListResponse>(
+                    new GetReferenceListRequest()
+                    {
+                        TagId = tagId
+                    });
+                return response.Message.Items;
+
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return new SiteReference[] { };
+            }
+           
         }
         
         [HttpGet]

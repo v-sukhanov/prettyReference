@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpService } from './services/http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProcessService } from './services/process.service';
+import { NotificationsService } from './services/notifications.service';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ProcessService } from './services/process.service';
     ],
     providers: [
         HttpService,
-        ProcessService
+        ProcessService,
+        NotificationsService
     ]
 })
 export class CoreModule {

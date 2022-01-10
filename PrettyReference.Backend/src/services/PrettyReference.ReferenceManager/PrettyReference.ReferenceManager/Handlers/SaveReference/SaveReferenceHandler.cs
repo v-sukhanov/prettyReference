@@ -27,7 +27,11 @@ namespace PrettyReference.ReferenceManager.Handlers.SaveReference
 
             var savedReference = await _refManager.GetAndSaveReferenceInformation(context.Message.Url, context.Message.GroupId);
             
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ReferenceInformation, SiteReference>());
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ReferenceInformation, SiteReference>();
+                cfg.CreateMap<GroupReference, RefGroup>();
+            });
             var mapper = new Mapper(config);
             var mapped = mapper.Map<SiteReference>(savedReference);
             await context.RespondAsync(new SaveReferenceResponse()

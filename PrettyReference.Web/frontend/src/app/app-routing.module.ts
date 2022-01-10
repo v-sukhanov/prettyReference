@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BrowseComponent } from './features/browse/browse.component';
+import { BrowseComponent } from './components/browse/browse.component';
 
 const routes: Routes = [
 	{

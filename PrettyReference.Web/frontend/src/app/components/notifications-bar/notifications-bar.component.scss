@@ -1,0 +1,14 @@
+
+
+.container {
+	background: var(--primary-color);
+	border-radius: 5px;
+	padding: 10px 20px;
+}
+
+span {
+	font-size: 13px;
+	overflow: hidden;
+	font-family: 'Roboto', sans-serif;
+	color: var(--background-color)
+}

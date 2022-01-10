@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IReference } from '../../interfaces/requests/get-url-list/reference.interface';
 import { BrowseDataService } from '../../services/browse-data.service';
 import { ReferenceModel } from '../../models/reference.model';
+import { NotificationsService } from '../../../../core/services/notifications.service';
 
 @Component({
 	selector: 'pref-reference-box',
@@ -16,7 +17,8 @@ export class ReferenceBoxComponent implements OnInit {
 	@Output() public deleteReferenceEvent: EventEmitter<string>;
 
 	constructor(
-		private _dataService: BrowseDataService
+		private _dataService: BrowseDataService,
+		private _notificationsService: NotificationsService
 	) {
 		this.groupId = null;
 		this.reference = null;
@@ -34,6 +36,8 @@ export class ReferenceBoxComponent implements OnInit {
 	}
 
 	public copy() {
-		navigator.clipboard.writeText(this.reference?.url ?? '').then();
+		navigator.clipboard.writeText(this.reference?.url ?? '').then(() => {
+			this._notificationsService.notifications$.next('Ссылка скопирована');
+		});
 	}
 }

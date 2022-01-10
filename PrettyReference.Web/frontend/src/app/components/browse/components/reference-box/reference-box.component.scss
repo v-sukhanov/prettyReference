@@ -69,9 +69,22 @@ a {
 	opacity: .5;
 	font-family: 'Roboto', sans-serif;
 	color: white;
+	transition: .2s;
 }
 
 .img-copy {
 	width: 18px;
 	height: 18px;
 }
+
+.group-ref {
+	cursor: pointer;
+	&:hover {
+		text-decoration: none;
+		.span_medium {
+			opacity: 1;
+		}
+	}
+
+}
+

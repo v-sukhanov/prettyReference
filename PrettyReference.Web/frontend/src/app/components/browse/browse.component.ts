@@ -4,6 +4,7 @@ import { combineLatest, debounceTime, EMPTY, Subject, switchMap, takeUntil, time
 import { ProcessService } from '../../core/services/process.service';
 import { ReferenceModel } from './models/reference.model';
 import { ActivatedRoute } from '@angular/router';
+import { NotificationsService } from '../../core/services/notifications.service';
 
 @Component({
 	selector: 'pref-browse',
@@ -20,7 +21,8 @@ export class BrowseComponent implements OnInit, OnDestroy {
 	constructor(
 		private _dataService: BrowseDataService,
 		private _processService: ProcessService,
-		private _route: ActivatedRoute
+		private _route: ActivatedRoute,
+		private _notificationsService: NotificationsService
 	) {
 		this.groupId = null;
 		this.urlList = [];
@@ -72,6 +74,8 @@ export class BrowseComponent implements OnInit, OnDestroy {
 
 	public deleteReference(id: string): void {
 		this.urlList = this.urlList.filter(x => x.id !== id);
-		this._dataService.deleteReference(id).subscribe();
+		this._dataService.deleteReference(id).subscribe(() => {
+			this._notificationsService.notifications$.next('Ссылка успешно удалена');
+		});
 	}
 }

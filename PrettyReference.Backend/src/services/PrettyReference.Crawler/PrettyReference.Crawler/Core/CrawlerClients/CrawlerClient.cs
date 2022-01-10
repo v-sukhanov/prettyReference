@@ -43,6 +43,20 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
                 }
             }
             
+            if (metaData.Image == null)
+            {
+                var imgs = doc.DocumentNode.SelectNodes("//img");
+                foreach (var img in imgs)
+                {
+                    var src = img.Attributes["src"].Value;
+                    if (Uri.IsWellFormedUriString(src, UriKind.Absolute))
+                    {
+                        metaData.Image = src;
+                        break;
+                    }
+                }
+            }
+            
             return metaData;
         }
 

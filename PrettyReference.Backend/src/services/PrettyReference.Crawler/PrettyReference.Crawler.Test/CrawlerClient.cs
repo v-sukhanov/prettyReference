@@ -35,7 +35,7 @@ namespace PrettyReference.Crawler.Test
         {
             var host = await BuildTestHost();
             var crawlerClient = host.ServiceProvider.GetRequiredService<CrawlerClient>();
-            var data = crawlerClient.GetMetaDataByUrl("https://www.youtube.com/");
+            var data = crawlerClient.GetMetaDataByUrl("https://investments101.ru/academy/courses/technical-analysis/lessons/what-is-tech-analysis");
             Assert.Pass();
         }
         

@@ -91,12 +91,18 @@ span {
 	overflow: hidden;
 	box-sizing: border-box;
 }
+
 .settings-panel-wrap {
 	position: absolute;
 	overflow: hidden;
 	right: 0;
 	bottom: 0;
 	z-index: 1000;
+	height: 0;
+}
+
+.settings-panel-wrap_open {
+	height: initial;
 }
 
 .settings-panel {

@@ -16,7 +16,8 @@ import { BrowseLoaderComponent } from './components/browse-loader/browse-loader.
 	],
 	imports: [
 		CommonModule,
-		FlexModule
+		FlexModule,
+		RouterModule
 	],
 	providers: [
 		BrowseDataService

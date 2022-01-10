@@ -1,4 +1,4 @@
-<div fxLayoutAlign="space-between" class="reference-box" *ngIf="reference" fxLayout="column" fxLayoutGap="25px">
+<div fxLayoutAlign="space-between" class="reference-box" *ngIf="reference" fxLayout="column" fxLayoutGap="35px">
     <div fxLayout="column" fxLayoutGap="10px">
         <a [href]="reference.url" target="_blank" fxLayout="column" fxLayoutGap="10px">
             <div  class="img-wrap">
@@ -32,7 +32,7 @@
 
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div  fxLayout="row" fxLayoutGap="7px">
+        <a class="group-ref" [routerLink]="'../' + reference.groupReference?.id ?? 'all'"  fxLayout="row" fxLayoutGap="7px">
             <div fxLayoutAlign="center center" *ngIf="reference.groupReference && !groupId">
                 <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" [style.fill]="reference.groupReference.color">
                     <path d="M0 0h24v24H0V0z" fill="none"/>
@@ -41,11 +41,11 @@
                 </svg>
             </div>
             <div *ngIf="reference.groupReference && !groupId">
-                <span class="span_medium">
+                <span class="span_medium groupReference-label">
                     {{reference.groupReference.label}}
                 </span>
             </div>
-        </div>
+        </a>
         <div class="reference-box-action" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="end">
             <div fxLayoutAlign="center center">
                 <img class="img-copy" (click)="copy()" src="assets/img/copy.svg" alt="cope">

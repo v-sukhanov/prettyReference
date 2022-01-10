@@ -14,4 +14,12 @@
 .content {
 	height: calc(100vh - 60px);
 	box-sizing: border-box;
+	position: relative;
+}
+.notification-bar {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 2000;
 }

@@ -3,6 +3,7 @@ import { SideBarDataService } from '../../services/side-bar-data.service';
 import { combineLatest, Subject, takeUntil, timer } from 'rxjs';
 import { ProcessService } from '../../../../core/services/process.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationsService } from '../../../../core/services/notifications.service';
 
 @Component({
 	selector: 'pref-side-bar-add-group',
@@ -22,7 +23,8 @@ export class SideBarAddGroupComponent implements OnInit, OnDestroy {
 	constructor(
 		private _dataService: SideBarDataService,
 		private _processService: ProcessService,
-		private _router : Router
+		private _router : Router,
+		private _notificationsService: NotificationsService
 	) {
 		this.groupId = null;
 		this._unsub$ = new Subject<void>();
@@ -83,6 +85,7 @@ export class SideBarAddGroupComponent implements OnInit, OnDestroy {
 		combineLatest([this._dataService.createReferenceGroup(label, this.selectedColor), timer(500)])
 			.subscribe(() => {
 				this.addProcess = false;
+				this._notificationsService.notifications$.next('Группа успешно создана');
 				this._processService.tagsWasChanged$.next();
 			});
 	}
@@ -96,6 +99,7 @@ export class SideBarAddGroupComponent implements OnInit, OnDestroy {
 			.subscribe(() => {
 				this.deleteProcess = false;
 				this._processService.tagsWasChanged$.next();
+				this._notificationsService.notifications$.next('Группа успешно удалена');
 				this._router.navigate(['/browse/all'])
 			});
 	}

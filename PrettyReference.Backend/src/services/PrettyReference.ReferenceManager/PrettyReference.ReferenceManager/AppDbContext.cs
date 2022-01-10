@@ -35,7 +35,8 @@ namespace PrettyReference.ReferenceManager
             modelBuilder.Entity<ReferenceInformation>()
                 .HasOne(x => x.GroupReference)
                 .WithMany(x => x.References)
-                .HasForeignKey(x => x.GroupReferenceId);
+                .HasForeignKey(x => x.GroupReferenceId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
         public override int SaveChanges()
         {

@@ -51,15 +51,15 @@ services:
     tty: true
     environment:
       RABBITMQ_HOST: rabbitmq
-#  reference-manager:
-#    build:
-#      context: ./PrettyReference.Backend/src/services/
-#      dockerfile: PrettyReference.ReferenceManager/PrettyReference.ReferenceManager/Dockerfile
-#    tty: true
-#    depends_on:
-#      database_mysql:
-#        condition: service_healthy
-#    environment:
-#      TZ: Europe/Moscow
-#      RABBITMQ_HOST: rabbitmq
-#      MYSQL: server=database_mysql,8778;database=pretty-reference;uid=root;pwd=root    
+  reference-manager:
+    build:
+      context: ./PrettyReference.Backend/src/services/
+      dockerfile: PrettyReference.ReferenceManager/PrettyReference.ReferenceManager/Dockerfile
+    tty: true
+    depends_on:
+      database_mysql:
+        condition: service_healthy
+    environment:
+      TZ: Europe/Moscow
+      RABBITMQ_HOST: rabbitmq
+      MYSQL: server=database_mysql,8778;database=pretty-reference;uid=root;pwd=root    

@@ -67,3 +67,23 @@ perfect-scrollbar>.ps.ps--active-x>.ps__rail-x.ps--clicking, perfect-scrollbar>.
 .ps-content {
 	padding-right: 8px;
 }
+
+
+[_nghost-yda-c76] .app-color-picker[_ngcontent-yda-c76] .preview[_ngcontent-yda-c76] .preview-background[_ngcontent-yda-c76] {
+	background: none;
+}
+
+.preview {
+	box-shadow: none !important;
+	background: none !important;
+}
+
+.preview-background {
+	background: none !important;
+}
+
+.ngx-colors-overlay {
+	.opened {
+		background: var(--background-navbar-color) !important;
+	}
+}

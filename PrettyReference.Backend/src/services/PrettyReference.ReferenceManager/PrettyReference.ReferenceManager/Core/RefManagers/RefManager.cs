@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using PrettyReference.Crawler.Interface.GetMetaData;
 using PrettyReference.ReferenceManager.Domain.Db;
+using Serilog;
 
 namespace PrettyReference.ReferenceManager.Core.RefManagers
 {
@@ -20,7 +22,7 @@ namespace PrettyReference.ReferenceManager.Core.RefManagers
             _dbContext = dbContext;
         }
 
-        public async Task<ReferenceInformation> GetAndSaveReferenceInformation(string url)
+        public async Task<ReferenceInformation> GetAndSaveReferenceInformation(string url, Guid? group)
         {
             var response = await _busControl.Request<GetMetaDataRequest, GetMetaDataResponse>(
                 new GetMetaDataRequest()
@@ -30,6 +32,7 @@ namespace PrettyReference.ReferenceManager.Core.RefManagers
             var config = new MapperConfiguration(cfg => cfg.CreateMap<SiteMetaDataItem, ReferenceInformation >());
             var mapper = new Mapper(config);
             var mapped = mapper.Map<ReferenceInformation>(response.Message.Item);
+            mapped.GroupReference = _dbContext.GroupReference.FirstOrDefault(x => x.Id == group);
             _dbContext.ReferenceInformation.Add(mapped);
             _dbContext.SaveChanges();
             return mapped;
@@ -46,9 +49,11 @@ namespace PrettyReference.ReferenceManager.Core.RefManagers
             _dbContext.SaveChanges();
         }
         
-        public ReferenceInformation[]  GetReferenceInformationList()
+        public ReferenceInformation[]  GetReferenceInformationList(Guid? group)
         {
-            return _dbContext.ReferenceInformation.OrderByDescending(x => x.CreatedDate).ToArray();
+            Log.Information($"ConsumeContext<GetReferenceListRequest> context: {group}");
+
+            return _dbContext.ReferenceInformation.Include(x => x.GroupReference).Where(x => group == null ||  x.GroupReferenceId == group).OrderByDescending(x => x.CreatedDate).ToArray();
         }
         
     }

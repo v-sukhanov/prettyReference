@@ -9,8 +9,8 @@ namespace PrettyReference.ReferenceManager.Domain.Db
         public string Source { get; set; }
         public string Title { get; set; }
         public string Image { get; set; }
-        public Guid GroupReferenceId { get; set; }
-        public GroupReference GroupReference { get; set; }
+        public Guid? GroupReferenceId { get; set; }
+        public GroupReference? GroupReference { get; set; }
 
         public ReferenceInformation()
         {

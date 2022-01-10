@@ -40,7 +40,9 @@ namespace PrettyReference.ReferenceManager.Test
         {
             var host = await BuildTestHost();
             var crawlerClient = host.ServiceProvider.GetRequiredService<RefManager>();
-            var data = await crawlerClient.GetAndSaveReferenceInformation("https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/src/Web/WebSPA/Client/src/modules");
+            var data = await crawlerClient.GetAndSaveReferenceInformation(
+                "https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/src/Web/WebSPA/Client/src/modules",
+                new Guid("08d9d2df-ab2c-4cf1-8e72-b07b81ef1906"));
             Assert.Pass();
         }
         
@@ -51,7 +53,8 @@ namespace PrettyReference.ReferenceManager.Test
             var bus = host.ServiceProvider.GetRequiredService<IBusControl>();
             var data = await bus.Request<SaveReferenceRequest, SaveReferenceResponse>(new SaveReferenceRequest()
             {
-                Url = "https://docs.docker.com/compose/reference/"
+                Url = "https://docs.docker.com/compose/reference/",
+                GroupId = new Guid("08d9d108-f930-4725-82af-fcc6a501db31")
             });
             Assert.Pass();
         }
@@ -61,7 +64,7 @@ namespace PrettyReference.ReferenceManager.Test
         {
             var host = await BuildTestHost();
             var crawlerClient = host.ServiceProvider.GetRequiredService<RefManager>();
-            var data = crawlerClient.GetReferenceInformationList();
+            var data = crawlerClient.GetReferenceInformationList(null);
             Assert.Pass();
         }
         

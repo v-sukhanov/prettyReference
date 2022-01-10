@@ -5,14 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using PrettyReference.ReferenceManager.Core.RefGroupManagers;
-using PrettyReference.ReferenceManager.Core.RefManagers;
 using PrettyReference.ReferenceManager.Interface.CreateRefGroup;
-using PrettyReference.ReferenceManager.Interface.DeleteReference;
 using PrettyReference.ReferenceManager.Interface.DeleteRefGroup;
-using PrettyReference.ReferenceManager.Interface.GetRefereceList;
-using PrettyReference.ReferenceManager.Interface.GetReferenceList;
 using PrettyReference.ReferenceManager.Interface.GetRefGroupList;
-using PrettyReference.ReferenceManager.Interface.SaveReference;
 using Serilog;
 
 namespace PrettyReference.ReferenceManager.Test
@@ -43,7 +38,7 @@ namespace PrettyReference.ReferenceManager.Test
         {
             var host = await BuildTestHost();
             var refGroupManager = host.ServiceProvider.GetRequiredService<RefGroupManager>();
-            refGroupManager.CreateGroup("group1");
+            refGroupManager.CreateGroup("group1", "white");
             Assert.Pass();
         }
         
@@ -64,7 +59,7 @@ namespace PrettyReference.ReferenceManager.Test
         {
             var host = await BuildTestHost();
             var refGroupManager = host.ServiceProvider.GetRequiredService<RefGroupManager>();
-            refGroupManager.DeleteGroup(new Guid("08d9d0fa-6671-43a2-82f3-389895005803"));
+            refGroupManager.DeleteGroup(new Guid("08d9d108-f930-4725-82af-fcc6a501db31"));
             Assert.Pass();
         }
         

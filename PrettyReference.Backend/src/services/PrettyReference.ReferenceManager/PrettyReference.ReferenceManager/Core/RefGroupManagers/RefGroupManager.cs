@@ -12,11 +12,12 @@ namespace PrettyReference.ReferenceManager.Core.RefGroupManagers
         {
             _dbContext = dbContext;
         }
-        public void CreateGroup(string label)
+        public void CreateGroup(string label, string color)
         {
             _dbContext.GroupReference.Add(new GroupReference()
             {
-                Label = label
+                Label = label,
+                Color = color
             });
             _dbContext.SaveChanges();
         }

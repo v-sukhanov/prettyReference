@@ -11,6 +11,6 @@ export class HeaderDataService {
 	}
 
 	public addUrl(request: IAddUrlRequest): Observable<IReference> {
-		return this._httpService.post('references/SaveReference', request);
+		return this._httpService.post('references/SaveReference', { url: request.url, tagId: request.tagId });
 	}
 }

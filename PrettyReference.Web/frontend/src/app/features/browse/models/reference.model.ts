@@ -1,8 +1,9 @@
 import { IReference } from '../interfaces/requests/get-url-list/reference.interface';
 import * as moment from 'moment/moment';
+import { IGroup } from '../../side-bar/interfaces/group.interface';
 
 
-export class UrlModel implements IReference{
+export class ReferenceModel implements IReference{
 	private _createdDate!: string;
 	public set createdDate(date: string) {
 		const createdUtc = moment.utc(date);
@@ -11,7 +12,7 @@ export class UrlModel implements IReference{
 		} else if (moment().diff(createdUtc, 'days') < 2 && (parseInt(moment().format('D'), 10) - parseInt(createdUtc.format('D'), 10)) === 1) {
 			this._createdDate = createdUtc.format('Вчера, H:mm');
 		} else if (moment().diff(createdUtc, 'days') < 7) {
-			this._createdDate = this._capitalize(createdUtc.format('dddd, H:mm:ss'));
+			this._createdDate = this._capitalize(createdUtc.format('dddd, H:mm'));
 		} else if (createdUtc.format('Y') === moment().format('Y')) {
 			this._createdDate = createdUtc.format('D MMMM, H:mm');
 		} else {
@@ -26,6 +27,8 @@ export class UrlModel implements IReference{
 	public source!: string;
 	public title!: string;
 	public url!: string;
+	public groupReference!: IGroup;
+	public groupReferenceId!: string;
 
 	constructor(params: IReference) {
 		Object.assign(this, params);

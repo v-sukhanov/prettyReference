@@ -1,22 +1,8 @@
-<div class="sidebar" fxLayout="column" fxLayoutGap="25px">
+<div class="sidebar" fxLayoutAlign="space-between" fxLayout="column" fxLayoutGap="25px">
     <div class="sidebar-items">
         <perfect-scrollbar>
-            <pref-side-bar-group-item label="Все теги" color="0"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Учеба" color="2"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Работа" color="3"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Собеседование" color="4"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Фронт" color="5"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Бэк" color="6"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Мэмы" color="7"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Тиктоки" color="8"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="React" color="9"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="50 лучших комедий" color="10"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="20 способов сломать прод" color="11"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Топ 10 стран" color="12"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Английский" color="13"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Французский" color="14"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Полезные статьи" color="15"></pref-side-bar-group-item>
-            <pref-side-bar-group-item label="Дизайн для чайников" color="16"></pref-side-bar-group-item>
+            <pref-side-bar-group-item [group]="{label: 'Все группы', id: 'all', color: 'rgba(255, 255, 255, .5)'}"></pref-side-bar-group-item>
+            <pref-side-bar-group-item *ngFor="let tag of tags;let index=index" [group]="tag"></pref-side-bar-group-item>
         </perfect-scrollbar>
 
     </div>

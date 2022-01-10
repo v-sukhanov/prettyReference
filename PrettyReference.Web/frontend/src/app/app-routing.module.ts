@@ -4,8 +4,12 @@ import { BrowseComponent } from './features/browse/browse.component';
 
 const routes: Routes = [
 	{
-		path: '',
+		path: 'browse/:groupId',
 		component: BrowseComponent
+	},
+	{
+		path: '**',
+		redirectTo: 'browse/all'
 	}
 ];
 

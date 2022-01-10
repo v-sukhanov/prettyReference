@@ -11,8 +11,8 @@ export class BrowseDataService {
 	constructor(private _httpService: HttpService) {
 	}
 
-	public getUrlList(): Observable<IReference[]> {
-		return this._httpService.get('references/GetReferenceList');
+	public getUrlList(tagId: string | null): Observable<IReference[]> {
+		return this._httpService.get('references/GetReferenceList', {tagId});
 	}
 
 	public deleteReference(id: string): Observable<void> {

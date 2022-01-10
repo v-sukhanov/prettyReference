@@ -10,13 +10,19 @@ namespace PrettyReference.ReferenceManager.Interface.Shared
         public string Image { get; set; }
         public string Source { get; set; }
         public DateTime CreatedDate { get; set; }
+        
+        public Guid? GroupReferenceId { get; set; }
+        
+        public RefGroup? GroupReference { get; set; }
+
+
 
 
         public SiteReference()
         {
             
         }
-        public SiteReference(Guid id, string url, string title, string image, string source, DateTime createdDate)
+        public SiteReference(Guid id, string url, string title, string image, string source, DateTime createdDate, Guid groupReferenceId)
         {
             Id = id;
             Url = url;
@@ -24,6 +30,7 @@ namespace PrettyReference.ReferenceManager.Interface.Shared
             Image = image;
             Source = source;
             CreatedDate = createdDate;
+            GroupReferenceId = groupReferenceId;
         }
     }
 }

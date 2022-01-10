@@ -22,7 +22,7 @@ namespace PrettyReference.ReferenceManager.Handlers.CreateRefGroup
                 throw new Exception("Label is empty");
             }
 
-            _refGroupManager.CreateGroup(context.Message.Label);
+            _refGroupManager.CreateGroup(context.Message.Label, context.Message.Color);
             
             await context.RespondAsync(new CreateRefGroupResponse());
         }

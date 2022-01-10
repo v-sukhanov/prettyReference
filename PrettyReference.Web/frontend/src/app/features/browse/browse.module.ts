@@ -11,17 +11,11 @@ import { BrowseLoaderComponent } from './components/browse-loader/browse-loader.
 @NgModule({
 	declarations: [
 		BrowseComponent,
-  ReferenceBoxComponent,
-  BrowseLoaderComponent
+		ReferenceBoxComponent,
+		BrowseLoaderComponent
 	],
 	imports: [
 		CommonModule,
-		RouterModule.forChild([
-			{
-				path: '',
-				component: BrowseComponent
-			}
-		]),
 		FlexModule
 	],
 	providers: [

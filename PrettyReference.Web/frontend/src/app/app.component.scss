@@ -1,9 +1,14 @@
 .template-container {
 	height: 100vh;
+	overflow: hidden;
 	box-sizing: border-box;
 	width: 100vw;
 	background-color: var(--background-color);
 	transition: background-color .2s, color .2s, border-right-color .2s;
+}
+
+.sidebar {
+	height: calc(100vh - 60px);
 }
 
 .content {

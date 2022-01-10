@@ -8,6 +8,7 @@ namespace PrettyReference.ReferenceManager.Domain.Db
     {
         public Guid Id { get; set; }
         public string Label { get; set; }
+        public string Color { get; set; }
         public List<ReferenceInformation> References { get; set; }
     }
 }

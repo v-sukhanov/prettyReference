@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IGroup } from '../../interfaces/group.interface';
 
 @Component({
 	selector: 'pref-side-bar-group-item',
@@ -6,12 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./side-bar-group-item.component.scss']
 })
 export class SideBarGroupItemComponent implements OnInit {
-	@Input() public label: string;
-	@Input() public color: string;
+	@Input() public group?: IGroup;
+	@Input() public color: number;
 
 	constructor() {
-		this.label = '';
-		this.color = '';
+		this.color = 0;
 	}
 
 	ngOnInit(): void {

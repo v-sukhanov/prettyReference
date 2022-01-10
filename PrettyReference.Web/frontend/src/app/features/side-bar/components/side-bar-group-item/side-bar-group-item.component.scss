@@ -1,79 +1,30 @@
 
+a {
+	text-decoration: none;
+
+}
+
 
 .group-item {
 	border-radius: 5px;
 	padding: 10px 0;
 	//background-color: #03DAC6;
 	cursor: pointer;
+	transition: .2s;
+	opacity: .5;
 	span {
 		transition: .2s;
 		font-family: Roboto, sans-serif;
 		font-size: 13px;
 
-		color: rgba(white, .5);
+		color: white;
 	}
 	&:hover {
-		span {
-			color: white;
-		}
+		opacity: 1;
 	}
 }
 
-.svg-0 {
-	fill: white;
-}
 
-.svg-1 {
-	fill: #845EC2;
-}
-
-.svg-2 {
-	fill: #D65DB1;
-}
-.svg-3 {
-	fill: #FF6F91;
-}
-.svg-4 {
-	fill: #FF9671;
-}
-.svg-5 {
-	fill: #FFC75F;
-}
-.svg-6 {
-	fill: #F9F871;
-}
-.svg-7 {
-	fill: #9BDE7E;
-}
-.svg-8 {
-	fill: #4BBC8E;
-}
-.svg-9 {
-	fill: #039590;
-}
-.svg-10 {
-	fill: #1C6E7D;
-}
-.svg-11 {
-	fill: #2F4858;
-}
-
-.svg-12 {
-	fill: #1C6E7D;
-}
-
-.svg-13 {
-	fill: #039590;
-}
-
-.svg-14 {
-	fill: #4BBC8E;
-}
-
-.svg-15 {
-	fill: #9BDE7E;
-}
-
-.svg-16 {
-	fill: #F9F871;
+.active {
+	opacity: 1;
 }

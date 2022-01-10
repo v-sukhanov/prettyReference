@@ -1,13 +1,47 @@
-<div class="container" fxLayout="row" fxLayoutAlign="end">
-    <div>
-        <input type="text" placeholder="Добавить тег">
+<div class="bottom-panel">
+    <div (click)="openChange(!open)" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="default center" [class.bottom-panel__toggler_open]="open" class="bottom-panel__toggler">
+        <div fxLayoutAlign="center center">
+            <img src="assets/img/auto_awesome.svg" alt="">
+        </div>
+        <div>
+            <span>
+                Управление группами
+            </span>
+        </div>
     </div>
-    <div fxLayoutAlign="center center" class="plus">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="25px" viewBox="0 0 25 25" version="1.1">
-            <g id="surface1">
-                <path style=" stroke:none;fill-rule:nonzero;fill-opacity:1;" d="M 19.792969 13.542969 L 13.542969 13.542969 L 13.542969 19.792969 L 11.457031 19.792969 L 11.457031 13.542969 L 5.207031 13.542969 L 5.207031 11.457031 L 11.457031 11.457031 L 11.457031 5.207031 L 13.542969 5.207031 L 13.542969 11.457031 L 19.792969 11.457031 Z M 19.792969 13.542969 "/>
-            </g>
-        </svg>
+</div>
+<div class="settings-panel-wrap">
+    <div [class.settings-panel_open]="open" class="settings-panel">
+        <div fxLayout="row" fxLayoutGap="25px">
+            <div fxLayout="row" fxLayoutGap="10px">
+                <input (keydown.enter)="addGroup()" [(ngModel)]="label" type="text" placeholder="Название группы">
+                <ngx-colors
+                        ngx-colors-trigger
+                        [palette]="colorPalette"
+                        [(ngModel)]="selectedColor"
+                        [hideColorPicker]="true"
+                        [hideTextInput]="true"
+                ></ngx-colors>
+
+                <button (click)="addGroup()" [class.btn_process]="addProcess" [disabled]="!label && !addProcess">
+                    <pref-loader class="btn-loader"></pref-loader>
+                    <span class="btn-span">
+                        Добавить
+                    </span>
+                </button>
+            </div>
+            <div *ngIf="groupId" class="vertical-divider"></div>
+            <button *ngIf="groupId" (click)="deleteGroup()" class="button_delete" [class.btn_process]="deleteProcess">
+                <pref-loader class="btn-loader"></pref-loader>
+                <span class="btn-span">
+                    Удалить текущую группу
+                </span>
+            </button>
+        </div>
+        <div (click)="openChange(false)" class="close-icon" fxLayoutAlign="center center">
+            <img src="assets/img/close.svg" alt="">
+        </div>
     </div>
+
 </div>
 

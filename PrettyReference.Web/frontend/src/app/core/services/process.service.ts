@@ -4,9 +4,13 @@ import { Subject } from 'rxjs';
 
 @Injectable()
 export class ProcessService {
-	public newUrlWasAdded$: Subject<void>;
+	public referencesWasChanged$: Subject<void>;
+	public tagsWasChanged$: Subject<void>;
+	public currentTagHasChanged: Subject<string | null>;
 
 	constructor() {
-		this.newUrlWasAdded$ = new Subject<void>();
+		this.referencesWasChanged$ = new Subject<void>();
+		this.tagsWasChanged$ = new Subject();
+		this.currentTagHasChanged = new Subject<string | null>();
 	}
 }

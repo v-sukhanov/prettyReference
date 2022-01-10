@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IReference } from '../../interfaces/requests/get-url-list/reference.interface';
 import { BrowseDataService } from '../../services/browse-data.service';
-import { UrlModel } from '../../models/url.model';
+import { ReferenceModel } from '../../models/reference.model';
 
 @Component({
 	selector: 'pref-reference-box',
@@ -10,14 +10,15 @@ import { UrlModel } from '../../models/url.model';
 })
 export class ReferenceBoxComponent implements OnInit {
 
-	@Input() public reference: UrlModel | null;
-
+	@Input() public reference: ReferenceModel | null;
+	@Input() public groupId: string | null;
 
 	@Output() public deleteReferenceEvent: EventEmitter<string>;
 
 	constructor(
 		private _dataService: BrowseDataService
 	) {
+		this.groupId = null;
 		this.reference = null;
 		this.deleteReferenceEvent = new EventEmitter<string>();
 	}
@@ -30,5 +31,9 @@ export class ReferenceBoxComponent implements OnInit {
 			return ;
 		}
 		this.deleteReferenceEvent.emit(this.reference.id);
+	}
+
+	public copy() {
+		navigator.clipboard.writeText(this.reference?.url ?? '').then();
 	}
 }

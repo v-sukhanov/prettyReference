@@ -25,7 +25,7 @@ namespace PrettyReference.ReferenceManager.Handlers.SaveReference
                 throw new Exception("Url is empty");
             }
 
-            var savedReference = await _refManager.GetAndSaveReferenceInformation(context.Message.Url);
+            var savedReference = await _refManager.GetAndSaveReferenceInformation(context.Message.Url, context.Message.GroupId);
             
             var config = new MapperConfiguration(cfg => cfg.CreateMap<ReferenceInformation, SiteReference>());
             var mapper = new Mapper(config);

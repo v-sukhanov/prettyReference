@@ -12,14 +12,15 @@ namespace PrettyReference.ReferenceManager.Core.RefGroupManagers
         {
             _dbContext = dbContext;
         }
-        public void CreateGroup(string label, string color)
+        public GroupReference CreateGroup(string label, string color)
         {
-            _dbContext.GroupReference.Add(new GroupReference()
+            var item =_dbContext.GroupReference.Add(new GroupReference()
             {
                 Label = label,
                 Color = color
             });
             _dbContext.SaveChanges();
+            return item.Entity;
         }
 
         public void DeleteGroup(Guid id)

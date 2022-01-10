@@ -13,7 +13,7 @@ export class SideBarDataService {
 		return this._httpService.get('references/GetReferenceGroupList');
 	}
 
-	public createReferenceGroup(label: string, color: string): Observable<void> {
+	public createReferenceGroup(label: string, color: string): Observable<{ item: IGroup }> {
 		return this._httpService.post('references/CreateReferenceGroup', {label, color})
 	}
 

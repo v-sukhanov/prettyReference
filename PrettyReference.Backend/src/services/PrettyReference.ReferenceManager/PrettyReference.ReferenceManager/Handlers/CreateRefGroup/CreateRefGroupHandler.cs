@@ -1,8 +1,11 @@
 using System;
 using System.Threading.Tasks;
+using AutoMapper;
 using MassTransit;
 using PrettyReference.ReferenceManager.Core.RefGroupManagers;
+using PrettyReference.ReferenceManager.Domain.Db;
 using PrettyReference.ReferenceManager.Interface.CreateRefGroup;
+using PrettyReference.ReferenceManager.Interface.Shared;
 
 namespace PrettyReference.ReferenceManager.Handlers.CreateRefGroup
 {
@@ -22,9 +25,14 @@ namespace PrettyReference.ReferenceManager.Handlers.CreateRefGroup
                 throw new Exception("Label is empty");
             }
 
-            _refGroupManager.CreateGroup(context.Message.Label, context.Message.Color);
-            
-            await context.RespondAsync(new CreateRefGroupResponse());
+            var item = _refGroupManager.CreateGroup(context.Message.Label, context.Message.Color);
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<GroupReference, RefGroup>());
+            var mapper = new Mapper(config);
+            var mappedItem = mapper.Map<RefGroup>(item);
+            await context.RespondAsync(new CreateRefGroupResponse()
+            {
+                Item = mappedItem
+            });
         }
     }
 }

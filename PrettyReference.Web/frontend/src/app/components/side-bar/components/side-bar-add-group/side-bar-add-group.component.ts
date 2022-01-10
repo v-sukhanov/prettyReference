@@ -87,10 +87,13 @@ export class SideBarAddGroupComponent implements OnInit, OnDestroy {
 		this.label = '';
 		this.addProcess = true;
 		combineLatest([this._dataService.createReferenceGroup(label, this.selectedColor), timer(500)])
-			.subscribe(() => {
+			.subscribe(([createResponse]) => {
 				this.addProcess = false;
 				this._notificationsService.notifications$.next('Группа успешно создана');
 				this._processService.tagsWasChanged$.next();
+				if (createResponse?.item?.id) {
+					this._router.navigate(['/browse/' + createResponse.item.id])
+				}
 			});
 	}
 
@@ -111,7 +114,7 @@ export class SideBarAddGroupComponent implements OnInit, OnDestroy {
 				unsub.unsubscribe();
 				this.deleteProcess = true;
 				combineLatest([this._dataService.deleteReferenceGroup(this.groupId), timer(500)])
-					.subscribe(() => {
+					.subscribe((x) => {
 						this.deleteProcess = false;
 						this._processService.tagsWasChanged$.next();
 						this._notificationsService.notifications$.next('Группа успешно удалена');

@@ -6,7 +6,7 @@
             <perfect-scrollbar>
                 <router-outlet></router-outlet>
             </perfect-scrollbar>
-            <div class="notification-bar">
+            <div class="notification-bar" [class.notification-bar_open-group-action]="groupBarOpen">
                 <pref-notifications-bar></pref-notifications-bar>
             </div>
         </div>

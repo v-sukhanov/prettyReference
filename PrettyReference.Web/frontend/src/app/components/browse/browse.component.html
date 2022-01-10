@@ -15,8 +15,11 @@
 </div>
 <div *ngIf="!firstLoading && !urlList.length" fxLayoutAlign="center center" class="loader">
     <div>
-        <span>
+        <span *ngIf="groupId">
             В этой группе пока нет ни одной ссылки.
+        </span>
+        <span *ngIf="!groupId">
+            В пока не добавили ни одной ссылки.
         </span>
     </div>
 

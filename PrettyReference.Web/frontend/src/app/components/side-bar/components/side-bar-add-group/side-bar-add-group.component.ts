@@ -128,6 +128,7 @@ export class SideBarAddGroupComponent implements OnInit, OnDestroy {
 		if (val) {
 			this.selectedColor = this.colorPalette[Math.floor(Math.random() * this.colorPalette.length)]
 		}
+		this._processService.groupBarActionOpen$.next(val);
 		this.open = val
 	}
 }

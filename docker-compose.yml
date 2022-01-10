@@ -25,16 +25,12 @@ services:
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
   database_mysql:
     platform: linux/x86_64
-    #Pull the latest mysql image
     image: mysql:8.0.22
-    #Map port 3306 on the mysql container to port 3306 in the host
     ports:
       - "8778:3306"
-    #Specify where the persisted Data should be stored
     volumes:
-      - /var/lib/mysql:/var/lib/mysql
+      - /var/lib/mysql:/var/lib/mysql2
     restart: always
-    #Specify Environment Variables for mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: newuser

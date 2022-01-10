@@ -14,6 +14,7 @@ import { NotificationsBarComponent } from './components/notifications-bar/notifi
 import { NotificationsBarModule } from './components/notifications-bar/notifications-bar.module';
 import { DialogModule } from './shared/components/dialog/dialog.module';
 import { ApplyDialogComponent } from './shared/components/apply-dialog/apply-dialog.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
 	declarations: [
@@ -21,6 +22,7 @@ import { ApplyDialogComponent } from './shared/components/apply-dialog/apply-dia
 	],
 	imports: [
 		BrowserModule,
+		CommonModule,
 		AppRoutingModule,
 		FlexModule,
 		CoreModule,

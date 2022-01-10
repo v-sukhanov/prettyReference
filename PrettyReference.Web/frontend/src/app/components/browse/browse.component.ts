@@ -1,10 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { BrowseDataService } from './services/browse-data.service';
 import { combineLatest, debounceTime, EMPTY, Subject, switchMap, takeUntil, timer } from 'rxjs';
 import { ProcessService } from '../../core/services/process.service';
 import { ReferenceModel } from './models/reference.model';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationsService } from '../../core/services/notifications.service';
+import { ApplyDialogComponent } from '../../shared/components/apply-dialog/apply-dialog.component';
+import { DialogConfig } from '../../shared/components/dialog/dialog-config.model';
+import { DialogService } from '../../shared/components/dialog/dialog.service';
 
 @Component({
 	selector: 'pref-browse',
@@ -22,7 +25,8 @@ export class BrowseComponent implements OnInit, OnDestroy {
 		private _dataService: BrowseDataService,
 		private _processService: ProcessService,
 		private _route: ActivatedRoute,
-		private _notificationsService: NotificationsService
+		private _notificationsService: NotificationsService,
+		private _dialogService: DialogService
 	) {
 		this.groupId = null;
 		this.urlList = [];
@@ -36,7 +40,6 @@ export class BrowseComponent implements OnInit, OnDestroy {
 			.pipe(
 				takeUntil(this._unsub$),
 				switchMap((params) => {
-					console.log(params)
 					this.firstLoading = true;
 					if (!params['groupId'] || params['groupId'] === 'all') {
 						this.groupId = null;
@@ -73,9 +76,21 @@ export class BrowseComponent implements OnInit, OnDestroy {
 	}
 
 	public deleteReference(id: string): void {
-		this.urlList = this.urlList.filter(x => x.id !== id);
-		this._dataService.deleteReference(id).subscribe(() => {
-			this._notificationsService.notifications$.next('Ссылка успешно удалена');
-		});
+		const applyEvent = new EventEmitter();
+		this._dialogService.open(ApplyDialogComponent, new DialogConfig<ApplyDialogComponent>({
+			data: {
+				text: 'Вы действительно хотите удалить текущую группу?',
+				applyText: 'Удалить',
+				applyEvent
+			}
+		}));
+		const unsub = applyEvent.subscribe(() => {
+			unsub.unsubscribe();
+			this.urlList = this.urlList.filter(x => x.id !== id);
+			this._dataService.deleteReference(id).subscribe(() => {
+				this._notificationsService.notifications$.next('Ссылка успешно удалена');
+			});
+		})
+
 	}
 }

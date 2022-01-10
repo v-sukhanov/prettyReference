@@ -12,6 +12,8 @@ import { SideBarModule } from './components/side-bar/side-bar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationsBarComponent } from './components/notifications-bar/notifications-bar.component';
 import { NotificationsBarModule } from './components/notifications-bar/notifications-bar.module';
+import { DialogModule } from './shared/components/dialog/dialog.module';
+import { ApplyDialogComponent } from './shared/components/apply-dialog/apply-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -27,7 +29,8 @@ import { NotificationsBarModule } from './components/notifications-bar/notificat
 		PerfectScrollbarModule,
 		SideBarModule,
 		BrowserAnimationsModule,
-		NotificationsBarModule
+		NotificationsBarModule,
+		DialogModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

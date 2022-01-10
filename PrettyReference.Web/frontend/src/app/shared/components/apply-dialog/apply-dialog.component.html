@@ -1,0 +1,15 @@
+<div class="container" fxLayout="column" fxLayoutGap="25px">
+    <div>
+        <span>
+            {{text}}
+        </span>
+    </div>
+    <div fxLayoutAlign="end" fxLayoutGap="15px">
+        <button class="secondary" (click)="dialogRef.close()">
+            Отменить
+        </button>
+        <button class="primary" (click)="applyEvent.emit();dialogRef.close()">
+            {{applyText}}
+        </button>
+    </div>
+</div>

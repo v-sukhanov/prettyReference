@@ -1,0 +1,18 @@
+<ng-container>
+    <div class="overlay">
+        <perfect-scrollbar *ngIf="dialogConfig?.useScroll">
+            <div #dialogWrap  (click)="onOverlayClicked(dialogWrap, $event)" class="dialog-wrap"  fxLayout="row" [fxLayoutAlign]="this.dialogConfig?.horizontalPosition + ' ' + this.dialogConfig?.position">
+                <div class="dialog" (click)="onDialogClicked($event)" [ngStyle]="dialogConfig?.style ?? null">
+                    <ng-template  prefInsertion></ng-template>
+                </div>
+            </div>
+        </perfect-scrollbar>
+        <div *ngIf="!dialogConfig?.useScroll" #dialogWrap2 (click)="onOverlayClicked(dialogWrap2, $event)" class="dialog-wrap"  fxLayout="row" [fxLayoutAlign]="this.dialogConfig?.horizontalPosition + ' ' + this.dialogConfig?.position">
+            <div class="dialog" (click)="onDialogClicked($event)" [ngStyle]="dialogConfig?.style ?? null">
+                <ng-template  prefInsertion></ng-template>
+            </div>
+        </div>
+
+    </div>
+</ng-container>
+

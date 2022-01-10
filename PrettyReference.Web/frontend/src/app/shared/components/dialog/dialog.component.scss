@@ -1,0 +1,38 @@
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
+	background: rgba(black, .25);
+	z-index: 1000;
+	@media screen and (max-width: 960px) {
+		height: 120vh;
+		height: calc(var(--vh, 1vh) * 120);
+	}
+}
+
+.dialog-wrap {
+	min-height: 100vh;
+	min-height: calc(var(--vh, 1vh) * 100);
+}
+
+.dialog {
+	//box-shadow: 0 15px 40px rgba($color: $primary-black-blue, $alpha: .1);
+	//background-color: $white;
+	position: relative;
+	//margin: 0 auto;
+	z-index: 10000;
+	@media screen and (max-width: 960px) {
+		max-width: 90vw;
+	}
+}
+
+.img-close {
+	position: absolute;
+	right: -20px;
+	top: 0;
+	cursor: pointer;
+}

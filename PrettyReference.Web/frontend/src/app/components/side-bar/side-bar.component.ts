@@ -3,6 +3,9 @@ import { SideBarDataService } from './services/side-bar-data.service';
 import { IGroup } from './interfaces/group.interface';
 import { Subject, switchMap, takeUntil } from 'rxjs';
 import { ProcessService } from '../../core/services/process.service';
+import { DialogService } from '../../shared/components/dialog/dialog.service';
+import { ApplyDialogModule } from '../../shared/components/apply-dialog/apply-dialog.module';
+import { ApplyDialogComponent } from '../../shared/components/apply-dialog/apply-dialog.component';
 
 @Component({
 	selector: 'pref-side-bar',
@@ -15,7 +18,8 @@ export class SideBarComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private _dataService: SideBarDataService,
-		private _processService: ProcessService
+		private _processService: ProcessService,
+		private _dialogService: DialogService
 
 	) {
 		this.tags = [];
@@ -36,7 +40,6 @@ export class SideBarComponent implements OnInit, OnDestroy {
 			.subscribe(x => {
 				this.tags = x;
 			});
-
 	}
 
 	public ngOnDestroy() {

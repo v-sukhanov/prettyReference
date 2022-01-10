@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { LoaderModule } from '../../shared/components/loader/loader.module';
 import { NgxColorsModule } from 'ngx-colors';
 import { RouterModule } from '@angular/router';
+import { DialogModule } from '../../shared/components/dialog/dialog.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { RouterModule } from '@angular/router';
 		FormsModule,
 		LoaderModule,
 		NgxColorsModule,
-		RouterModule
+		RouterModule,
+		DialogModule
 	],
 	providers: [
 		SideBarDataService

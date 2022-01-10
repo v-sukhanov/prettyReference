@@ -1,9 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { SideBarDataService } from '../../services/side-bar-data.service';
-import { combineLatest, Subject, takeUntil, timer } from 'rxjs';
+import { combineLatest, finalize, Subject, takeUntil, timer } from 'rxjs';
 import { ProcessService } from '../../../../core/services/process.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsService } from '../../../../core/services/notifications.service';
+import { ApplyDialogComponent } from '../../../../shared/components/apply-dialog/apply-dialog.component';
+import { DialogService } from '../../../../shared/components/dialog/dialog.service';
+import { DialogConfig } from '../../../../shared/components/dialog/dialog-config.model';
 
 @Component({
 	selector: 'pref-side-bar-add-group',
@@ -24,7 +27,8 @@ export class SideBarAddGroupComponent implements OnInit, OnDestroy {
 		private _dataService: SideBarDataService,
 		private _processService: ProcessService,
 		private _router : Router,
-		private _notificationsService: NotificationsService
+		private _notificationsService: NotificationsService,
+		private _dialogService: DialogService
 	) {
 		this.groupId = null;
 		this._unsub$ = new Subject<void>();
@@ -94,14 +98,27 @@ export class SideBarAddGroupComponent implements OnInit, OnDestroy {
 		if (this.deleteProcess) {
 			return;
 		}
-		this.deleteProcess = true;
-		combineLatest([this._dataService.deleteReferenceGroup(this.groupId), timer(500)])
+		const applyEvent = new EventEmitter();
+		this._dialogService.open(ApplyDialogComponent, new DialogConfig<ApplyDialogComponent>({
+			data: {
+				text: 'Вы действительно хотите удалить текущую группу?',
+				applyText: 'Удалить',
+				applyEvent
+			}
+		}));
+		const unsub = applyEvent
 			.subscribe(() => {
-				this.deleteProcess = false;
-				this._processService.tagsWasChanged$.next();
-				this._notificationsService.notifications$.next('Группа успешно удалена');
-				this._router.navigate(['/browse/all'])
-			});
+				unsub.unsubscribe();
+				this.deleteProcess = true;
+				combineLatest([this._dataService.deleteReferenceGroup(this.groupId), timer(500)])
+					.subscribe(() => {
+						this.deleteProcess = false;
+						this._processService.tagsWasChanged$.next();
+						this._notificationsService.notifications$.next('Группа успешно удалена');
+						this._router.navigate(['/browse/all'])
+					});
+			})
+
 	}
 
 	public openChange(val: boolean): void {

@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
       <UserSecretsId>fb2ace7c-84ca-4ba9-8d00-7a4e920d7696</UserSecretsId>
+      <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
     <ItemGroup>
@@ -17,7 +18,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\services\PrettyReference.Crawler\PrettyReference.Crawler.Interface\PrettyReference.Crawler.Interface.csproj" />
       <ProjectReference Include="..\..\services\PrettyReference.ReferenceManager\PrettyReference.ReferenceManager.Interface\PrettyReference.ReferenceManager.Interface.csproj" />
     </ItemGroup>
 

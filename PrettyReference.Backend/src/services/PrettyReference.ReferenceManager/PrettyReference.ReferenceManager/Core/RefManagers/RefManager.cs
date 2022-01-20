@@ -28,7 +28,7 @@ namespace PrettyReference.ReferenceManager.Core.RefManagers
                 new GetMetaDataRequest()
                 {
                     Url = url
-                });
+                }, timeout:  TimeSpan.FromSeconds(60));
             var config = new MapperConfiguration(cfg => cfg.CreateMap<SiteMetaDataItem, ReferenceInformation >());
             var mapper = new Mapper(config);
             var mapped = mapper.Map<ReferenceInformation>(response.Message.Item);

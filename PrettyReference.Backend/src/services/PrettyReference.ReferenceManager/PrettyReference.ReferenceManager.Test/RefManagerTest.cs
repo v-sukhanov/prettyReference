@@ -41,7 +41,7 @@ namespace PrettyReference.ReferenceManager.Test
             var host = await BuildTestHost();
             var crawlerClient = host.ServiceProvider.GetRequiredService<RefManager>();
             var data = await crawlerClient.GetAndSaveReferenceInformation(
-                "https://github.com/dotnet-architecture/eShopOnContainers/tree/dev/src/Web/WebSPA/Client/src/modules",
+                "https://3commas.io/ru/blog/oblako-ishimoku-ili-sposob-shortit-i-longovat-kak-samuraj",
                 new Guid("08d9d2df-ab2c-4cf1-8e72-b07b81ef1906"));
             Assert.Pass();
         }

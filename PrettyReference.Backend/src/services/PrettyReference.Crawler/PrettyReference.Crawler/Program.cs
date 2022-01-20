@@ -14,6 +14,7 @@ namespace PrettyReference.Crawler
             {
                 var config = new ConfigurationBuilder()
                     .AddEnvironmentVariables()
+                    // .AddUserSecrets<Program>()
                     .Build();
                 var services = new ServiceCollection();
 

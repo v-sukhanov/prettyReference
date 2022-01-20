@@ -23,11 +23,12 @@ services:
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    tty: true
     healthcheck:
-      timeout: 5s
-      interval: 5s
+      test: rabbitmq-diagnostics -q status
+      interval: 10s
+      timeout: 10s
       retries: 5
-      test: ["CMD", "rabbitmqctl", "status"]
   database_mysql:
     platform: linux/x86_64
     image: mysql:8.0.22
@@ -50,8 +51,11 @@ services:
       context: ./PrettyReference.Backend/src/services/PrettyReference.Crawler/
       dockerfile: PrettyReference.Crawler/Dockerfile
     tty: true
+#    restart: always
     environment:
       RABBITMQ_HOST: rabbitmq
+    depends_on:
+      - rabbitmq
   reference-manager:
     build:
       context: ./PrettyReference.Backend/src/services/
@@ -60,8 +64,7 @@ services:
     depends_on:
       database_mysql:
         condition: service_healthy
-#      rabbitmq:
-#        condition: service_healthy
+#    restart: always
     environment:
       TZ: Europe/Moscow
       RABBITMQ_HOST: rabbitmq
@@ -76,3 +79,14 @@ services:
       CORS_ORIGINS: "*"
     ports:
       - 5000:80
+  ui:
+    build:
+      context: ./PrettyReference.Web/frontend/
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - rabbitmq
+    environment:
+      CONFIGURATION_NAME: "production"
+

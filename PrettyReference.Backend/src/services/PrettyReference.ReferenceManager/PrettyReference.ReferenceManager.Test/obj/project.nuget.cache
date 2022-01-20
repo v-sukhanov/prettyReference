@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EFVIoxKBpaCsy5ZsyKfO2MWYl4Ey9971CGztKGVSPh5DUMcfxgAlBHS6oYF29ue+DUoi1iZX+zcsfN6RocvUXw==",
+  "dgSpecHash": "UqbTUInj+wvNU+si0Hx0uSvkLaoFbByicIK6jXnP2rlq/X10LhB3smuuiLup7mM3qm5ZLIHmA4vt11xkzusQxw==",
   "success": true,
   "projectFilePath": "/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.ReferenceManager/PrettyReference.ReferenceManager.Test/PrettyReference.ReferenceManager.Test.csproj",
   "expectedPackageFiles": [

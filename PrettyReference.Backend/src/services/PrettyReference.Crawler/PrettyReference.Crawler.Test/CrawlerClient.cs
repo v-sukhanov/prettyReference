@@ -35,7 +35,7 @@ namespace PrettyReference.Crawler.Test
         {
             var host = await BuildTestHost();
             var crawlerClient = host.ServiceProvider.GetRequiredService<CrawlerClient>();
-            var data = crawlerClient.GetMetaDataByUrl("https://investments101.ru/academy/courses/technical-analysis/lessons/what-is-tech-analysis");
+            var data = crawlerClient.GetMetaDataByUrl("https://3commas.io/ru/blog/oblako-ishimoku-ili-sposob-shortit-i-longovat-kak-samuraj");
             Assert.Pass();
         }
         
@@ -46,7 +46,7 @@ namespace PrettyReference.Crawler.Test
             var bus = host.ServiceProvider.GetRequiredService<IBusControl>();
             var response = await bus.Request<GetMetaDataRequest, GetMetaDataResponse>(new GetMetaDataRequest()
             {
-                Url = "https://docs.docker.com/compose/reference/"
+                Url = "https://3commas.io/ru/blog/oblako-ishimoku-ili-sposob-shortit-i-longovat-kak-samuraj"
             });
             Assert.Pass();
         }

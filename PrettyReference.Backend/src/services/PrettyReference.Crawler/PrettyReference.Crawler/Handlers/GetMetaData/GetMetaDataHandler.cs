@@ -1,8 +1,10 @@
 using System;
 using System.Threading.Tasks;
 using MassTransit;
+using Microsoft.Extensions.Logging;
 using PrettyReference.Crawler.Core.CrawlerClients;
 using PrettyReference.Crawler.Interface.GetMetaData;
+using Serilog;
 
 namespace PrettyReference.Crawler.Handlers.GetMetaData
 {
@@ -17,15 +19,25 @@ namespace PrettyReference.Crawler.Handlers.GetMetaData
 
         public async Task Consume(ConsumeContext<GetMetaDataRequest> context)
         {
-            if (string.IsNullOrWhiteSpace(context.Message.Url))
+            try
             {
-                throw new Exception("Url is empty");
+                if (string.IsNullOrWhiteSpace(context.Message.Url))
+                {
+                    throw new Exception("Url is empty");
+                }
+                Log.Information($"Try parse url: {context.Message.Url}");
+                var item = _crawlerClient.GetMetaDataByUrl(context.Message.Url);
+                Log.Information($"Url: {context.Message.Url}, successfully parsed");
+                await context.RespondAsync(new GetMetaDataResponse()
+                {
+                    Item = item
+                });
             }
-            var item =_crawlerClient.GetMetaDataByUrl(context.Message.Url);
-            await context.RespondAsync(new GetMetaDataResponse()
+            catch (Exception ex)
             {
-                Item = item
-            });
+                Log.Error("Error with added reference");
+            }
+            
         }
     }
 

@@ -13,16 +13,9 @@
         "packagesPath": "/Users/frontender/.nuget/packages/",
         "outputPath": "/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.Crawler/PrettyReference.Crawler.Interface/obj/",
         "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/frontender/.nuget/NuGet/NuGet.Config"
-        ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/indeepa/Indeepa/_packaging/Microservices/nuget/v3/index.json": {}
-        },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
@@ -66,16 +59,9 @@
         "packagesPath": "/Users/frontender/.nuget/packages/",
         "outputPath": "/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.ReferenceManager/PrettyReference.ReferenceManager.Interface/obj/",
         "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/frontender/.nuget/NuGet/NuGet.Config"
-        ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/indeepa/Indeepa/_packaging/Microservices/nuget/v3/index.json": {}
-        },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
@@ -119,16 +105,9 @@
         "packagesPath": "/Users/frontender/.nuget/packages/",
         "outputPath": "/Users/frontender/Desktop/prettyReference/PrettyReference.Backend/src/services/PrettyReference.ReferenceManager/PrettyReference.ReferenceManager/obj/",
         "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/frontender/.nuget/NuGet/NuGet.Config"
-        ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/indeepa/Indeepa/_packaging/Microservices/nuget/v3/index.json": {}
-        },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",

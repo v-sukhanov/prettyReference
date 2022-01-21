@@ -29,7 +29,11 @@
                 </span>
             </div>
         </div>
-
+        <div *ngIf="reference.saveWithError">
+            <span class="error-span">
+                При сохранении ссылки произошла ошибка
+            </span>
+        </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center">
         <a class="group-ref" [routerLink]="'../' + reference.groupReference?.id ?? 'all'"  fxLayout="row" fxLayoutGap="7px">

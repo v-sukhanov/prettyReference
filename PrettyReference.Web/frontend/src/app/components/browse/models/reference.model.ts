@@ -29,6 +29,7 @@ export class ReferenceModel implements IReference{
 	public url!: string;
 	public groupReference!: IGroup;
 	public groupReferenceId!: string;
+	public saveWithError!: boolean;
 
 	constructor(params: IReference) {
 		Object.assign(this, params);

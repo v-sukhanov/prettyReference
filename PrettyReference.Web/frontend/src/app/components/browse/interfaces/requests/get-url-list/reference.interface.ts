@@ -9,4 +9,5 @@ export interface IReference {
 	createdDate: string;
 	groupReference?: IGroup;
 	groupReferenceId?: string;
+	saveWithError: boolean;
 }

@@ -1,6 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using AngleSharp;
+using CsQuery;
 using HtmlAgilityPack;
 using PrettyReference.Crawler.Interface.GetMetaData;
 using Serilog;
@@ -14,25 +20,35 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
         {
         }
 
-        public SiteMetaDataItem GetMetaDataByUrl(string url)
+        public async Task<SiteMetaDataItem> GetMetaDataByUrl2(string url)
         {
-            Log.Information("1");
-            // var url = "https://github.com/sudheerj/angular-interview-questions/blob/master/README.md?utm_source=pocket_mylist";
+            Uri myUri = new Uri(url);
+            var httpClient = new HttpClient()
+            {
+                BaseAddress = myUri
+            };
+            using (var response = await httpClient.GetAsync(url))
+            {
+                response.EnsureSuccessStatusCode();
+                var result = await response.Content.ReadAsStringAsync();
+            }
+            return new SiteMetaDataItem() { Url = url, Source = myUri.Host};
+        }
+        public async Task<SiteMetaDataItem> GetMetaDataByUrl(string url)
+        {
+            Uri myUri = new Uri(url);
+            var httpClient = new HttpClient()
+            {
+                BaseAddress = myUri
+            };
             var web = new HtmlWeb();
-            Log.Information("2");
-
             var doc = web.Load(url);
-            Log.Information("3");
-
+            
+            
             var list = doc.DocumentNode.SelectNodes("//meta");
-            Log.Information("4");
-
-            Uri myUri = new Uri(url);   
-            Log.Information("5");
-
+            
             var metaData = new SiteMetaDataItem() { Url = url, Source = myUri.Host};
-            Log.Information("6");
-
+            
             foreach (var item in list)
             {
                 if (item.Attributes["property"]?.Value == "og:title")
@@ -45,8 +61,7 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
                 }
                 
             }
-            Log.Information("7");
-
+            
             if (metaData.Title == null)
             {
                 var title = doc.DocumentNode.SelectNodes("//title");
@@ -55,8 +70,7 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
                     metaData.Title = title[0].InnerText;
                 }
             }
-            Log.Information("8");
-
+            
             if (metaData.Image == null)
             {
                 var imgs = doc.DocumentNode.SelectNodes("//img");
@@ -70,7 +84,6 @@ namespace PrettyReference.Crawler.Core.CrawlerClients
                     }
                 }
             }
-            Log.Information("9");
             return metaData;
         }
 

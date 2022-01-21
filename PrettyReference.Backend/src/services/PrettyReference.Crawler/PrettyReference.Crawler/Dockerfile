@@ -8,10 +8,10 @@ COPY ["PrettyReference.Crawler.Interface/PrettyReference.Crawler.Interface.cspro
 RUN dotnet restore "PrettyReference.Crawler/PrettyReference.Crawler.csproj"
 COPY . .
 WORKDIR "/src/PrettyReference.Crawler"
-RUN dotnet build "PrettyReference.Crawler.csproj" -c Release -o /app/build
+RUN dotnet build "PrettyReference.Crawler.csproj" -c Debug -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "PrettyReference.Crawler.csproj" -c Release -o /app/publish
+RUN dotnet publish "PrettyReference.Crawler.csproj" -c Debug -o /app/publish
 
 FROM base AS final
 WORKDIR /app

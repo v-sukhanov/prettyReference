@@ -28,7 +28,7 @@ namespace PrettyReference.Api.Base.Controllers.References
                     {
                         Url = request.Url,
                         GroupId = request.TagId
-                    });
+                    }, timeout: TimeSpan.FromSeconds(60));
                 return response.Message.Item;
             }
             catch (Exception e)

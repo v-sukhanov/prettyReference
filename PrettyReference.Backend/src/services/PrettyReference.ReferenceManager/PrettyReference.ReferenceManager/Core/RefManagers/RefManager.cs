@@ -24,15 +24,35 @@ namespace PrettyReference.ReferenceManager.Core.RefManagers
 
         public async Task<ReferenceInformation> GetAndSaveReferenceInformation(string url, Guid? group)
         {
-            var response = await _busControl.Request<GetMetaDataRequest, GetMetaDataResponse>(
-                new GetMetaDataRequest()
+            Uri myUri = new Uri(url);
+            var metaData = new GetMetaDataResponse()
+            {
+                Item = new SiteMetaDataItem()
                 {
-                    Url = url
-                }, timeout:  TimeSpan.FromSeconds(60));
+                    Url = url,
+                    Source = myUri.Host
+                }
+            };
+            bool error = false;
+            try
+            {
+                var response = await _busControl.Request<GetMetaDataRequest, GetMetaDataResponse>(
+                    new GetMetaDataRequest()
+                    {
+                        Url = url
+                    });
+                metaData = response.Message;
+            }
+            catch (Exception ex)
+            {
+                error = true;
+                Log.Error("Error in GetAndSaveReferenceInformation: {0}", ex.Message);
+            }
             var config = new MapperConfiguration(cfg => cfg.CreateMap<SiteMetaDataItem, ReferenceInformation >());
             var mapper = new Mapper(config);
-            var mapped = mapper.Map<ReferenceInformation>(response.Message.Item);
+            var mapped = mapper.Map<ReferenceInformation>(metaData.Item);
             mapped.GroupReference = _dbContext.GroupReference.FirstOrDefault(x => x.Id == group);
+            mapped.SaveWithError = error;
             _dbContext.ReferenceInformation.Add(mapped);
             _dbContext.SaveChanges();
             return mapped;

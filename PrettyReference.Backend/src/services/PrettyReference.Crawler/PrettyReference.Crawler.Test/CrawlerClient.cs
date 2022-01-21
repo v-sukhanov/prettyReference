@@ -35,7 +35,7 @@ namespace PrettyReference.Crawler.Test
         {
             var host = await BuildTestHost();
             var crawlerClient = host.ServiceProvider.GetRequiredService<CrawlerClient>();
-            var data = crawlerClient.GetMetaDataByUrl("https://3commas.io/ru/blog/oblako-ishimoku-ili-sposob-shortit-i-longovat-kak-samuraj");
+            var data = await crawlerClient.GetMetaDataByUrl("https://3commas.io/ru/blog/oblako-ishimoku-ili-sposob-shortit-i-longovat-kak-samuraj");
             Assert.Pass();
         }
         

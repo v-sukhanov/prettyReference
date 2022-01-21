@@ -51,7 +51,7 @@ services:
       context: ./PrettyReference.Backend/src/services/PrettyReference.Crawler/
       dockerfile: PrettyReference.Crawler/Dockerfile
     tty: true
-#    restart: always
+    restart: always
     environment:
       RABBITMQ_HOST: rabbitmq
     depends_on:
@@ -64,7 +64,7 @@ services:
     depends_on:
       database_mysql:
         condition: service_healthy
-#    restart: always
+    #    restart: always
     environment:
       TZ: Europe/Moscow
       RABBITMQ_HOST: rabbitmq

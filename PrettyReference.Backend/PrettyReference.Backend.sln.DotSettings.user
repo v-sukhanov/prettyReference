@@ -27,7 +27,7 @@
     &lt;TestId&gt;NUnit3x::4C803F43-D46D-46DA-8D17-0C24A39052FC::net5.0::PrettyReference.Crawler.Test.Tests.GetSiteDate&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=657d7749_002D01bf_002D491e_002D8cbc_002D8860912c8b86/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetSiteDataByRabbitMq" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=657d7749_002D01bf_002D491e_002D8cbc_002D8860912c8b86/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetSiteDataByRabbitMq" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::4C803F43-D46D-46DA-8D17-0C24A39052FC::net5.0::PrettyReference.Crawler.Test.Tests.GetSiteDataByRabbitMq&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
@@ -65,7 +65,7 @@
     &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.RefGroupTest.GetGroupListByRabbit&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=abceec92_002D5481_002D4e1b_002D8698_002D3adf949be3ef/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SaveSiteDate" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=abceec92_002D5481_002D4e1b_002D8698_002D3adf949be3ef/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="SaveSiteDate" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::BF4A9403-2C24-453E-B87B-7C2810FA27B8::net5.0::PrettyReference.ReferenceManager.Test.Tests.SaveSiteDate&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::4C803F43-D46D-46DA-8D17-0C24A39052FC::net5.0::PrettyReference.Crawler.Test.Tests.GetSiteDataByRabbitMq&lt;/TestId&gt;

@@ -32,6 +32,7 @@ namespace PrettyReference.Crawler
                 var host = new AppServiceHost(services, config);
                 await host.Start();
                 Log.Information("Started");
+                // await Task.Delay(TimeSpan.FromMinutes(10));
                 Console.ReadLine();
             }
             catch (Exception ex)

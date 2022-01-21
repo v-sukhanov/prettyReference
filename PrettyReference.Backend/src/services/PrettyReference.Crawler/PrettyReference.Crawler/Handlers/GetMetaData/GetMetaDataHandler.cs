@@ -26,7 +26,7 @@ namespace PrettyReference.Crawler.Handlers.GetMetaData
                     throw new Exception("Url is empty");
                 }
                 Log.Information($"Try parse url: {context.Message.Url}");
-                var item = _crawlerClient.GetMetaDataByUrl(context.Message.Url);
+                var item = await _crawlerClient.GetMetaDataByUrl(context.Message.Url);
                 Log.Information($"Url: {context.Message.Url}, successfully parsed");
                 await context.RespondAsync(new GetMetaDataResponse()
                 {
@@ -35,7 +35,8 @@ namespace PrettyReference.Crawler.Handlers.GetMetaData
             }
             catch (Exception ex)
             {
-                Log.Error("Error with added reference");
+                await context.RespondAsync(new GetMetaDataResponse());
+                Log.Error("Error with added reference {0}", ex.Message);
             }
             
         }

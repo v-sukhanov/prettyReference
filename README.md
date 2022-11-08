@@ -2,7 +2,7 @@
 
 Application for saving links in a beautiful way
 
-<img src="https://i.ibb.co/pJcfDSB/image.png">
+<img src="https://i.ibb.co/48s1q6D/image.png">
 
 ### To launch the application,  enter the following command
 

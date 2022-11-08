@@ -18,3 +18,4 @@ Application for saving links in a beautiful way
 ### App screenshot
 
 <img src="https://i.ibb.co/pJcfDSB/image.png">
+

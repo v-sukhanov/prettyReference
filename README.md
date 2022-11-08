@@ -14,3 +14,7 @@ Application for saving links in a beautiful way
 - Set colors for forlders
 - Save links in folder
 - Filter links by folders
+
+### App screenshot
+
+<img src="https://i.ibb.co/pJcfDSB/image.png">

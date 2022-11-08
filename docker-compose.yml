@@ -78,7 +78,7 @@ services:
       RABBITMQ_HOST: rabbitmq
       CORS_ORIGINS: "*"
     ports:
-      - 5000:80
+      - 5001:80
   ui:
     build:
       context: ./PrettyReference.Web/frontend/

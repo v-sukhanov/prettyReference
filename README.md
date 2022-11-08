@@ -2,6 +2,8 @@
 
 Application for saving links in a beautiful way
 
+<img src="https://i.ibb.co/pJcfDSB/image.png">
+
 ### To launch the application,  enter the following command
 
 - enter the command in the console: docker-compose build && docker-compose up
@@ -15,7 +17,5 @@ Application for saving links in a beautiful way
 - Save links in folder
 - Filter links by folders
 
-### App screenshot
 
-<img src="https://i.ibb.co/pJcfDSB/image.png">
 

@@ -1,6 +1,6 @@
 # Pretty reference
 
-Application for saving links in a beautiful way
+Application for saving links in a beautiful way, just enter some link and application itself will get title and photo.
 
 <img src="https://i.ibb.co/48s1q6D/image.png">
 
